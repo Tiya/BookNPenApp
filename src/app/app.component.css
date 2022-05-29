@@ -1,0 +1,73 @@
+.navbar-nav{
+    display: flex!important;
+}
+
+
+/* menu */
+
+#templatemo_menu {
+	clear: both;
+	width: 960px;
+	height: 45px;
+	background: url("/assets/images/templatemo_menu_bg.jpg") no-repeat;
+}
+
+#templatemo_menu ul {
+	padding: 13px 0 0 0;
+	margin: 0;
+	list-style: none;
+}
+
+#templatemo_menu ul li{
+	display: inline;
+}
+
+#templatemo_menu ul li a{
+	float: left;
+	padding: 0 20px;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: #969547;
+}
+
+#templatemo_menu li a:hover, #templatemo_menu li .current{
+	color: #fcf88e;
+}
+
+/* header */
+#templatemo_header {
+	clear: both;
+	width: 100%;
+	height: 285px;
+	padding: 0;
+	margin: 0;
+	background: url("/assets/images/bookaAppHeader.jpg") no-repeat center;
+    background-size: 100%;
+}
+
+/* end of header */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+ }
+ 
+ .row > div[class*='col-'] {
+   display: flex;
+ }
+.container{
+    padding: 5%;
+} 
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
