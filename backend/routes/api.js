@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const mongoose = require('mongoose');
+var jwt = require('jsonwebtoken');
 const db = "mongodb+srv://admin:1289lash@users.rs1bqhv.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(db, err=>{
@@ -13,12 +14,26 @@ mongoose.connect(db, err=>{
     }
 })
 
-
+function verifyToken(req,res,next){
+    if(!req.headers.authorization){
+        return res.status(401).send('Unauthorised Request');
+    }
+    let token = req.headers.authorization.split(' ')[1]
+    if(token==='null'){
+        return res.status(401).send('Unauthorised Request');
+    }
+    let payload = jwt.verify(token, 'security');
+    if(!payload){
+        return res.status(401).send('Unauthorised Request');
+    }
+    req.userId = payload.subject;
+    next()
+}
 router.get('/',(req,res)=>{
     res.send('Hello from API route');
 })
 
-router.post('/signup',(req,res)=>{
+router.post('/signup', (req,res)=>{
     let userData = req.body;
     let user = new User(userData);
     user.save((error,resgisteredUser)=>{
@@ -26,7 +41,10 @@ router.post('/signup',(req,res)=>{
             console.log(error);
         }
         else{
-            res.status(200).send(resgisteredUser);
+            let payload={subject:resgisteredUser._id};
+            let token =jwt.sign(payload,'secretKey')
+            res.status(200).send({token});
+            // res.status(200).send(resgisteredUser);
         }
     })
 })
@@ -51,9 +69,15 @@ router.post('/login',(req,res)=>{
                 res.status(401).send('Invalid Password');
             }
             else{
-                res.status(200).send(user);
+                let payload={subject:user._id};
+                let token =jwt.sign(payload,'secretKey')
+                res.status(200).send({token});
+                // res.status(200).send(user);
             }
         }
     })
 })
+
+
+
 module.exports = router;
