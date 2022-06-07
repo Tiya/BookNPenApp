@@ -1,1 +1,43 @@
-<p>addbook works!</p>
+<div class='card'>
+    <form (ngSubmit)="AddBook()">
+<div class='card-header'>
+ ADD BOOK
+</div>
+<div class='card-body'>            
+  <div class='table-responsive'>
+    <table class='table'>       
+    
+      <tbody>  
+          <!-- <tr>
+              <td> <label>Product Id</label></td>
+              <td><input type="text" name="book_id" [(ngModel)]="productItem.productId"/></td>                  
+            </tr>    -->
+            <tr>
+                <td><label>Book Name</label></td>
+                <td><input type="text" name="book_name" [(ngModel)]="bookItem.bookName"/></td>                  
+              </tr>  
+              <tr>
+                <td><label>Book Author</label></td>
+                <td><input type="text" name="book_author" [(ngModel)]="bookItem.bookAuthor"/></td>                  
+              </tr>  
+              <tr>
+                <td><label>Book Categories</label></td>
+                <td><input type="text" name="book_category" [(ngModel)]="bookItem.bookCategory"/></td>                  
+              </tr>  
+              <tr>
+                <td><label>Book Description</label></td>
+                <td><input type="text" name="book_description" [(ngModel)]="bookItem.bookDescription"/></td>                  
+              </tr>  
+             
+              
+              <tr>
+                <td></td>
+                <td><input type="submit" value="Submit" /></td>                  
+              </tr>             
+      </tbody>
+    </table>
+  </div>
+</div>
+</form>
+</div>
+
