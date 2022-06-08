@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const api = require('./routes/api')
 
-const PORT = 3000;
+
 const app =express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -12,6 +12,9 @@ app.get('/',(req,res)=>{
     res.send('Hello from Server');
 })
 
-app.listen(PORT,()=>{
-    console.log('Server is running on localhost'+PORT)
-})
+const booksRouter=require('./routes/addBookRoutes');
+app.use('/books',booksRouter);
+
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
