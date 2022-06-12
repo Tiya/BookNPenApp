@@ -11,8 +11,9 @@ export class BookdataService {
    getBooks(){
      return this.http.get("http://localhost:3000/books");
    }
-   newBook(item: BooksModel){
-    return this.http.post("http://localhost:3000/books/insert",{"book": item})
+  //  newBook(item: BooksModel){
+    newBook(formData: FormData){
+    return this.http.post("http://localhost:3000/books/insert",formData)
     .subscribe(data =>{console.log(data)})
   }
 }

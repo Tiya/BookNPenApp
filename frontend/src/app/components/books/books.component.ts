@@ -10,6 +10,9 @@ import {BooksModel} from './books.model';
 export class BooksComponent implements OnInit {
   title:String = 'Book List';
   books: BooksModel[]=[];
+  myPDF: Uint8Array | undefined;
+  blob: Blob | undefined;
+
   //image properties
  // imageWidth: number=50;
  // imageMargin: number=2;
@@ -18,8 +21,9 @@ export class BooksComponent implements OnInit {
   ngOnInit(): void {
     this.bookdataService.getBooks().subscribe((data)=>{
       this.books=JSON.parse(JSON.stringify(data));
+     
       console.log(this.books);
     })
   }
-
+  
 }
