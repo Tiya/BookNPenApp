@@ -10,15 +10,33 @@ import {BooksModel} from '../books/books.model';
 })
 export class AddbookComponent implements OnInit {
   title:String="Publish Your Book";
+  image: any
+  pdffile: any
   constructor(private bookdataService: BookdataService,  private router: Router) { }
   bookItem= new BooksModel("","","","");
   ngOnInit(): void {
   }
   AddBook()
   {
-    this.bookdataService.newBook(this.bookItem);
+    const formData = new FormData();
+    formData.append('file', this.pdffile)
+    formData.append('image', this.image)
+    formData.append('bookName', this.bookItem.bookName)
+    formData.append('bookAuthor', this.bookItem.bookAuthor)
+    formData.append('bookCategory', this.bookItem.bookCategory)
+    formData.append('bookDescription', this.bookItem.bookDescription)
+   // this.bookdataService.newBook(this.bookItem);
+   this.bookdataService.newBook(formData);
     console.log("called");
     alert("Success");
     this.router.navigate(['/']);
+  }
+  onFileSelect(event: any){
+    const pdffile=event.target.files[0];
+    this.pdffile=pdffile;
+  }
+  onImageSelect(event: any){
+    const image=event.target.files[0];
+    this.image=image;
   }
 }
