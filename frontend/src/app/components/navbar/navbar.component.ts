@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 import { AuthService } from 'src/app/services/auth.service';
-<<<<<<< Updated upstream
 import { HasRoleGuard } from 'src/app/has-role.guard';
-=======
-// import { Router } from '@angular/router';
-
->>>>>>> Stashed changes
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',

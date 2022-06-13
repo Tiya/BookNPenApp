@@ -13,7 +13,6 @@ import { HasRoleGuard } from './has-role.guard';
 const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'home',component:HomeComponent},
 {path:'login',component:LoginComponent},
-<<<<<<< Updated upstream
 {path:'books',component:BooksComponent
 ,canActivate:[AuthGuard]
 },
@@ -31,13 +30,6 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'dashboard',component:DashboardComponent
 ,canActivate:[AuthGuard]
 }
-=======
-{path:'dashboard',component:DashboardComponent},
-{path:'books',component:BooksComponent},
-{path:'addbook',component:AddbookComponent},
-{path:'authors',component:AuthorsComponent},
-{path:'addauthor',component:AddauthorsComponent},
->>>>>>> Stashed changes
 ];
 
 @NgModule({
