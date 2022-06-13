@@ -1,9 +1,41 @@
-<div class="py-5 mt-5 login">
+     <!-- Modal Sign Up -->
+
+     <div class="modal modal-signin fade py-5" aria-hidden="true" aria-labelledby="modal-title" tabindex="-1" role="dialog" id="modalSignin">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-5 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <h2 class="modal-title fw-bold mb-0" id="modal-title">Log In</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+    
+          <div class="modal-body p-5 pt-0">
+            <form class="">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com" [(ngModel)]="loginUserData.email" name="email" required>
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password" [(ngModel)]="loginUserData.password" name="password" required>
+                <label for="floatingPassword">Password</label>
+              </div>
+              <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" data-bs-dismiss="modal" id="closemodal" type="submit"  (click)="loginUser()">LOGIN</button>
+              <hr class="m-4">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+<!-- <div class="py-5 mt-5 login">
     <div class="row py-5">
       <div class="col-md-6 mx-auto">
         <span class="anchor" id="formLogin"></span>
   
-        <!-- form card login -->
         <div class="card rounded-3">
           <div class="card-header">
             <h3 class="mb-0">Login</h3>
@@ -22,12 +54,11 @@
               <button type="button" (click)="loginUser()" class="btn btn-success float-right">Login</button>
             </form>
           </div>
-          <!--/card-block-->
+ 
         </div>
-        <!-- /form card login -->
   
       </div>
   
   
     </div>
-  </div>
+  </div> -->

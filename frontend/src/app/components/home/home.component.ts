@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private viewportScroller: ViewportScroller,
     private _router: Router, private _auth: AuthService) {}
+
   public onClick(elementId: string): void { 
     this.viewportScroller.scrollToAnchor(elementId);
   }
@@ -27,8 +28,8 @@ export class HomeComponent implements OnInit {
       res => {
         console.log(res);
         localStorage.setItem('token',res.token);
-        alert("Hi "+ this.registerUserData.username + "! Please proceed to Log In");
-        this._router.navigate(['/login']);
+        // alert("Hi "+ this.registerUserData.username + "! Please proceed to Log In");
+        this._router.navigate(['/dashboard']);
       },
       err => console.log(err) 
     )
