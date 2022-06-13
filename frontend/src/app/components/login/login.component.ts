@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { UserModel } from '../models/user.model';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,9 +11,11 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginUserData: any = {}
+  // user: UserModel | undefined;
 
   constructor(private _auth: AuthService,
     private _router: Router) { }
+
 
   ngOnInit(): void {
   }
@@ -21,8 +25,9 @@ export class LoginComponent implements OnInit {
       res => {
         console.log(res)
         localStorage.setItem('token', res.token)
+        // this.user = this._auth.getUser(res.token)
         alert("Welcome to BookNPen")
-        this._router.navigate(['/home'])
+        this._router.navigate(['/dashboard'])
       },
       err => {
         console.log(err)

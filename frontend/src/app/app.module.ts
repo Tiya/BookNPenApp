@@ -15,6 +15,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { BooksComponent } from './components/books/books.component';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { AddauthorsComponent } from './components/addauthors/addauthors.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { AddauthorsComponent } from './components/addauthors/addauthors.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [AuthService,{
     provide : HTTP_INTERCEPTORS,

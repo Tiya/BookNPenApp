@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 const db = "mongodb+srv://admin:1289lash@users.rs1bqhv.mongodb.net/?retryWrites=true&w=majority";
 
+// const db = "mongodb+srv://FSDGroup3:fsdgp3.123@cluster0.1f3izav.mongodb.net/?retryWrites=true&w=majority";
+
 mongoose.connect(db, err=>{
     if(err){
         console.log('Error!' + err);
@@ -14,21 +16,6 @@ mongoose.connect(db, err=>{
     }
 })
 
-function verifyToken(req,res,next){
-    if(!req.headers.authorization){
-        return res.status(401).send('Unauthorised Request');
-    }
-    let token = req.headers.authorization.split(' ')[1]
-    if(token==='null'){
-        return res.status(401).send('Unauthorised Request');
-    }
-    let payload = jwt.verify(token, 'security');
-    if(!payload){
-        return res.status(401).send('Unauthorised Request');
-    }
-    req.userId = payload.subject;
-    next()
-}
 router.get('/',(req,res)=>{
     res.send('Hello from API route');
 })
