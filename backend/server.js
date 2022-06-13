@@ -2,7 +2,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const api = require('./routes/api')
+const mongoose=require('mongoose')
+mongoose.connect('mongodb+srv://FSDGroup3:Fsdgp3.123@cluster0.1f3izav.mongodb.net/BookNPen?retryWrites=true&w=majority');
 
+var conn = mongoose.connection;
+conn.on('connected', function() {
+    console.log('database is connected successfully');
+});
+conn.on('disconnected',function(){
+    console.log('database is disconnected successfully');
+})
 
 const app =express();
 app.use(cors());
