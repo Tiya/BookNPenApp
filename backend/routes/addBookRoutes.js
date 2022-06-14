@@ -2,7 +2,7 @@ const express=require(`express`);
 const booksRouter=express.Router();
 const Bookdata = require('../models/BookData');
 const multer=require('multer')
-
+const jwt=require('jsonwebtoken')
 const path = require('path');
 var fs = require('fs');
 
@@ -109,7 +109,7 @@ function checkFileType(file, callback){
     if(token==='null'){
         return res.status(401).send('Unauthorised Request');
     }
-    let payload = jwt.verify(token, 'security');
+    let payload = jwt.verify(token, 'secretKey');
     if(!payload){
         return res.status(401).send('Unauthorised Request');
     }
