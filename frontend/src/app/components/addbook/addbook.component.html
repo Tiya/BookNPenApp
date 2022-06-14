@@ -1,3 +1,4 @@
+
 <div class='card'>
     <form (ngSubmit)="AddBook()">
 <div class='card-header'>
@@ -7,26 +8,26 @@
   <div class='table-responsive'>
     <table class='table'>       
     
-      <tbody>  
+      <tbody class="tbody">  
           <!-- <tr>
               <td> <label>Product Id</label></td>
               <td><input type="text" name="book_id" [(ngModel)]="productItem.productId"/></td>                  
             </tr>    -->
             <tr>
-                <td><label>Book Name</label></td>
-                <td><input type="text" name="book_name" [(ngModel)]="bookItem.bookName"/></td>                  
+                <td class="td1"><label>Book Name</label></td>
+                <td class="td1"><input type="text"  name="book_name" [(ngModel)]="bookItem.bookName"/></td>                  
               </tr>  
               <tr>
                 <td><label>Book Author</label></td>
-                <td><input type="text" name="book_author" [(ngModel)]="bookItem.bookAuthor"/></td>                  
+                <td><input type="text"  name="book_author" [(ngModel)]="bookItem.bookAuthor"/></td>                  
               </tr>  
               <tr>
                 <td><label>Book Categories</label></td>
-                <td><input type="text" name="book_category" [(ngModel)]="bookItem.bookCategory"/></td>                  
+                <td><input type="text"  name="book_category" [(ngModel)]="bookItem.bookCategory"/></td>                  
               </tr>  
               <tr>
                 <td><label>Book Description</label></td>
-                <td><input type="text" name="book_description" [(ngModel)]="bookItem.bookDescription"/></td>                  
+                <td ><input type="text"  name="book_description" [(ngModel)]="bookItem.bookDescription"/></td>                  
               </tr> 
               <tr>
                 <div>
@@ -43,7 +44,7 @@
               
               <tr>
                 <td></td>
-                <td><input type="submit" value="Submit" /></td>                  
+                <td class="submit"><input type="submit" value="Submit" id="submit" /></td>                  
               </tr>             
       </tbody>
     </table>
@@ -51,4 +52,6 @@
 </div>
 </form>
 </div>
+
+   
 
