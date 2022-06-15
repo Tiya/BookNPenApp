@@ -21,13 +21,19 @@ router.get('/',(req,res)=>{
 })
 
 router.post('/signup', (req,res)=>{
-    let userData = req.body;
-    let user = new User(userData);
-    user.save((error,resgisteredUser)=>{
+    let userData = new User({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+        role:'Author'
+      });
+    // let user = new User(userData);
+    userData.save((error,resgisteredUser)=>{
         if(error){
             console.log(error);
         }
         else{
+
             let payload={subject:resgisteredUser._id};
             let token =jwt.sign(payload,'secretKey')
             res.status(200).send({token});
@@ -56,7 +62,7 @@ router.post('/login',(req,res)=>{
                 res.status(401).send('Invalid Password');
             }
             else{
-                let payload={subject:user._id};
+                let payload={subject:user};
                 let token =jwt.sign(payload,'secretKey')
                 res.status(200).send({token});
                 // res.status(200).send(user);

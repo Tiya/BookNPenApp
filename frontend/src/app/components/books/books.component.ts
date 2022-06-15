@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { BookdataService } from 'src/app/services/bookdata.service';
 import {BooksModel} from './books.model';
 
@@ -16,7 +17,7 @@ export class BooksComponent implements OnInit {
   //image properties
  // imageWidth: number=50;
  // imageMargin: number=2;
-  constructor( private bookdataService: BookdataService) { }
+  constructor( private bookdataService: BookdataService, public _auth:AuthService) { }
 
   ngOnInit(): void {
     this.bookdataService.getBooks().subscribe((data)=>{
@@ -25,5 +26,7 @@ export class BooksComponent implements OnInit {
       console.log(this.books);
     })
   }
+
+
   
 }

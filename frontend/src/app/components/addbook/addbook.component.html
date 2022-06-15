@@ -1,54 +1,53 @@
 <div class='card'>
-    <form (ngSubmit)="AddBook()">
+  <form (ngSubmit)="AddBook()">
 <div class='card-header'>
- ADD BOOK
+Add Book
 </div>
 <div class='card-body'>            
-  <div class='table-responsive'>
-    <table class='table'>       
-    
-      <tbody>  
-          <!-- <tr>
-              <td> <label>Product Id</label></td>
-              <td><input type="text" name="book_id" [(ngModel)]="productItem.productId"/></td>                  
-            </tr>    -->
+<div class='table-responsive'>
+  <table class='table'>       
+  
+    <tbody class="tbody">  
+        <!-- <tr>
+            <td> <label>Product Id</label></td>
+            <td><input type="text" name="book_id" [(ngModel)]="productItem.productId"/></td>                  
+          </tr>    -->
+          <tr>
+              <td class="td1"><label>Book Name</label></td>
+              <td class="td1"><input autocomplete="off" required type="text"  name="book_name" [(ngModel)]="bookItem.bookName"/></td>                  
+            </tr>  
             <tr>
-                <td><label>Book Name</label></td>
-                <td><input type="text" name="book_name" [(ngModel)]="bookItem.bookName"/></td>                  
-              </tr>  
-              <tr>
-                <td><label>Book Author</label></td>
-                <td><input type="text" name="book_author" [(ngModel)]="bookItem.bookAuthor"/></td>                  
-              </tr>  
-              <tr>
-                <td><label>Book Categories</label></td>
-                <td><input type="text" name="book_category" [(ngModel)]="bookItem.bookCategory"/></td>                  
-              </tr>  
-              <tr>
-                <td><label>Book Description</label></td>
-                <td><input type="text" name="book_description" [(ngModel)]="bookItem.bookDescription"/></td>                  
-              </tr> 
-              <tr>
-                <div>
-                 <td><label>Upload Book Image</label></td>
-                 <td> <input (change)="onImageSelect($event)" name="image" type="file"></td>
-                </div>
-              </tr> 
-             <tr>
-               <div>
-                <td><label>Upload Book(in pdf format only)</label></td>
-              <td> <input (change)="onFileSelect($event)" name="file" type="file"></td>
-               </div>
-             </tr>
-              
-              <tr>
-                <td></td>
-                <td><input type="submit" value="Submit" /></td>                  
-              </tr>             
-      </tbody>
-    </table>
-  </div>
+              <td><label>Book Author</label></td>
+              <td><input type="text" autocomplete="off" required  name="book_author" [(ngModel)]="bookItem.bookAuthor"/></td>                  
+            </tr>  
+            <tr>
+              <td><label>Book Categories</label></td>
+              <td><input type="text" autocomplete="off" required  name="book_category" [(ngModel)]="bookItem.bookCategory"/></td>                  
+            </tr>  
+            <tr>
+              <td><label>Book Description</label></td>
+              <td ><input type="text" autocomplete="off" required  name="book_description" [(ngModel)]="bookItem.bookDescription"/></td>                  
+            </tr> 
+            <tr>
+              <div>
+               <td><label>Upload Book Image</label></td>
+               <td> <input (change)="onImageSelect($event)" required  name="image" type="file"></td>
+              </div>
+            </tr> 
+           <tr>
+             <div>
+              <td><label>Upload Book(in pdf format only)</label></td>
+            <td> <input (change)="onFileSelect($event)" required name="file" type="file"></td>
+             </div>
+           </tr>
+            
+            <tr>
+              <td></td>
+              <td class="submit"><input type="submit" value="Submit" id="submit" /></td>                  
+            </tr>             
+    </tbody>
+  </table>
+</div>
 </div>
 </form>
 </div>
-

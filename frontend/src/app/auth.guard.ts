@@ -13,6 +13,7 @@ export class AuthGuard implements CanActivate {
     if (this.jwtAuth.loggedIn()) {
       return true;
     } else {
+      alert('Please login to access the pages')
       this.router.navigate(["/home"], {
         queryParams: {
           return: state.url

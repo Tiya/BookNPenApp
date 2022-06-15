@@ -13,7 +13,7 @@ export class AuthService {
 
   private _signupUrl ="http://localhost:3000/api/signup"
   private _loginUrl ="http://localhost:3000/api/login"
-  user!: UserModel;
+  // user!: UserModel;
   constructor(private http:HttpClient,
     private _router:Router) { 
       // this.user = this.getUser(this.token)
@@ -37,20 +37,26 @@ export class AuthService {
     this._router.navigate(['/home']);
   }
   getToken(){
+    console.log('Hi GetToken');
     return localStorage.getItem('token');
   }
 
   userRoleAccess(){
     var token=localStorage.getItem('token')||"";
-   var _roleAccess= JSON.parse(atob(token.split('.')[1]));
+    var parse = atob(token.split('.')[1])
+   var _roleAccess= JSON.parse(parse);
    console.log('Hi');
-   console.log(_roleAccess);
-   if(_roleAccess.role=='Admin'){
+  //  console.log(_roleAccess);
+   if(_roleAccess.subject.role ==="Admin"){
+     console.log('Hello Admin')
+     console.log(_roleAccess.subject.role)
      return true
    }
+   console.log(_roleAccess.subject.role)
    alert('No access')
    return false
   }
+
   // public getUser(token:string):UserModel{
   //   return JSON.parse(atob(token.split('.')[1])) as UserModel;
   // }
