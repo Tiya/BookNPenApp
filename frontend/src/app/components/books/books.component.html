@@ -19,7 +19,7 @@
                     <tr *ngFor='let book of books'>
                         
                         <td>{{ book.bookName }}</td>
-                        <td></td>
+                        <td><img class="rounded-circle mt-5" [src]="getImageUrl(book)" /></td>
                         <td>{{ book.bookAuthor }}</td>
                         <td>{{ book.bookCategory }}</td>
                         <td>{{ book.bookDescription }}</td>

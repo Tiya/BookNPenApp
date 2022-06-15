@@ -13,7 +13,7 @@ console.log("in addBookRoutes");
     extended: true
 }));
   var fs = require('fs');
-var dir = './public/uploads';
+var dir = '../frontend/src/assets/images';
 
   if (!fs.existsSync(dir)){
     console.log("new: "+dir);
@@ -23,9 +23,11 @@ var dir = './public/uploads';
   
   booksRouter.use(cors());
   booksRouter.use(bodyparser.json());
+
+  booksRouter.use('/images', express.static(path.join('../frontend/src/assets/images')));
   const storage = multer.diskStorage({
     destination:(req,file, callback)=>{
-      callback(null, './public/uploads')
+      callback(null, '../frontend/src/assets/images')
     },
     filename:(req, file, callback)=>{
       callback(null, file.fieldname+Date.now()+path.extname(file.originalname));
@@ -61,13 +63,11 @@ function checkFileType(file, callback){
   booksRouter.get('/', function (req, res) {
     Bookdata.find()
             .then(function(books){
-              console.log(books);
-             
                 res.send(books);
             })
   })    
 
-  booksRouter.post('/insert',verifyToken, upload.fields([
+  booksRouter.post('/insert', upload.fields([
     {name: "file", maxCount: 1},
     {name: "image", maxCount: 1},
   ]),function(req,res){
@@ -85,18 +85,19 @@ function checkFileType(file, callback){
         bookCategory : req.body.bookCategory,
         bookDescription : req.body.bookDescription,
         bookFile: {
-          data: fs.readFileSync(path.join('./public/uploads/' + req.files.file[0].filename)), 
-          contentType: 'application/pdf',
-              },
-        bookImage: {
-                data: fs.readFileSync(path.join('./public/uploads/' + req.files.image[0].filename)), 
-                contentType: 'images/png',
-                    }
+          data:fs.readFileSync(path.join('../frontend/src/assets/images/' + req.files.file[0].filename)),
+          contentType: 'image/png',
+        }, 
+        bookImage:{
+          data: fs.readFileSync(path.join('../frontend/src/assets/images/' + req.files.image[0].filename)), 
+        contentType: 'image/png',
+      }
+               
    }       
    
    var book = new Bookdata(book);
   // console.log(book);
-  // console.log(book.bookImage);
+ // console.log(book.bookImage);
    book.save();
 });
   module.exports=booksRouter;
