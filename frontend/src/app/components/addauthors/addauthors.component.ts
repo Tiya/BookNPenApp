@@ -11,7 +11,6 @@ import {AuthorModel} from '../authors/authors.model';
 export class AddauthorsComponent implements OnInit {
   title:String="Add an Author";
   image: any
-  pdffile: any
   constructor(private authorService:AuthordataService ,  private router: Router) { }
   authorItem= new AuthorModel("","");
   ngOnInit(): void {
