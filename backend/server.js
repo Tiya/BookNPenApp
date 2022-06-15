@@ -15,6 +15,9 @@ app.get('/',(req,res)=>{
 const booksRouter=require('./routes/addBookRoutes');
 app.use('/books',booksRouter);
 
+const authorRouter=require('./routes/addAuthorRoutes');
+app.use('/authors',authorRouter);
+
 app.listen(process.env.PORT || 3000, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
   });

@@ -2,6 +2,7 @@ const express=require(`express`);
 const booksRouter=express.Router();
 const Bookdata = require('../models/BookData');
 const multer=require('multer')
+const jwt = require('jsonwebtoken');
 
 const path = require('path');
 var fs = require('fs');
@@ -16,10 +17,10 @@ console.log("in addBookRoutes");
 var dir = './public/uploads';
 
   if (!fs.existsSync(dir)){
-    console.log("new: "+dir);
+    // console.log("new: "+dir);
       fs.mkdirSync(dir);
   }
-  console.log("old: "+dir);
+  // console.log("old: "+dir);
   
   booksRouter.use(cors());
   booksRouter.use(bodyparser.json());
@@ -34,7 +35,7 @@ var dir = './public/uploads';
   var upload = multer({
     storage: storage,
     limits:{
-      fileSize: 1000000
+      fileSize: 1000000  //upto 1MB files only
     },
     fileFilter:function(req,file,callback){
       checkFileType(file, callback);
@@ -61,7 +62,7 @@ function checkFileType(file, callback){
   booksRouter.get('/', function (req, res) {
     Bookdata.find()
             .then(function(books){
-              console.log(books);
+              // console.log(books);
              
                 res.send(books);
             })
@@ -106,11 +107,11 @@ function checkFileType(file, callback){
     if(!req.headers.authorization){
         return res.status(401).send('Unauthorised Request');
     }
-    let token = req.headers.authorization.split('')[1]
+    let token = req.headers.authorization.split(' ')[1]
     if(token==='null'){
         return res.status(401).send('Unauthorised Request');
     }
-    let payload = jwt.verify(token, 'security');
+    let payload = jwt.verify(token,'secretKey');
     if(!payload){
         return res.status(401).send('Unauthorised Request');
     }
