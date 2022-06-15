@@ -81,7 +81,7 @@ booksRouter.get('/:id',  (req, res) => {
             })
   })    
 
-  booksRouter.post('/insert', upload.fields([
+  booksRouter.post('/insert',verifyToken,upload.fields([
     {name: "file", maxCount: 1},
     {name: "image", maxCount: 1},
   ]),function(req,res){
@@ -177,11 +177,12 @@ booksRouter.put('/update', upload.fields([
 
   module.exports=booksRouter;
 
+
   function verifyToken(req,res,next){
     if(!req.headers.authorization){
         return res.status(401).send('Unauthorised Request');
     }
-    let token = req.headers.authorization.split(' ')[1]
+    let token = req.headers.authorization.split('')[1]
     if(token==='null'){
         return res.status(401).send('Unauthorised Request');
     }

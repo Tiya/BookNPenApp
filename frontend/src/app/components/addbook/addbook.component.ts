@@ -32,7 +32,7 @@ export class AddbookComponent implements OnInit {
   //  this.bookItem.bookFile=this.pdffile.data;
     console.log("called");
     alert("Success");
-    this.router.navigate(['/']);
+    this.router.navigate(['/books']);
   }
   onFileSelect(event: any){
     const pdffile=event.target.files[0];

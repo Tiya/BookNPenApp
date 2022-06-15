@@ -11,15 +11,13 @@ export class HasRoleGuard implements CanActivate {
   constructor(private authService:AuthService,private route:Router){
   }
   canActivate(){
-    // if(this.authService.userRoleAccess())
+    if(this.authService.userRoleAccess())
     return true;
-    // else{
-    //   this.route.navigate(['/dashboard'])
-    //   return false 
-    // }
+    else{
+      this.route.navigate(['/dashboard'])
+      return false 
+    }
   }
-
-  
     // route: ActivatedRouteSnapshot,
     // state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
           // return this.authService.user.roles.includes('Admin');
