@@ -5,6 +5,7 @@ const multer=require('multer')
 const jwt=require('jsonwebtoken')
 const path = require('path');
 var fs = require('fs');
+var sharp = require('sharp');
 
 console.log("in addBookRoutes");
   const cors = require('cors');
@@ -77,6 +78,10 @@ function checkFileType(file, callback){
     //const file=req.files;
     console.log("file::::"+req.files.file[0].filename);
     console.log("images:::"+req.files.image[0].filename);
+
+   // Configuring thumbnail image
+ // let compressedImage =path.join('../frontend/src/assets/images/files/' + req.files.file[0].filename);
+  sharp(req.files.image[0].filename).resize(200,200).png({quality : 50}).toFile('../frontend/src/assets/images/files/' + req.files.image[0].filename);
    
     var book = {       
        
@@ -88,7 +93,7 @@ function checkFileType(file, callback){
         bookFilePath : req.files.file[0].filename,
         bookFile: {
           data:fs.readFileSync(path.join('../frontend/src/assets/images/files/' + req.files.file[0].filename)),
-          contentType: 'image/png',
+          contentType: 'application/pdf',
         }, 
         bookImage:{
           data: fs.readFileSync(path.join('../frontend/src/assets/images/files/' + req.files.image[0].filename)), 
@@ -102,6 +107,17 @@ function checkFileType(file, callback){
  // console.log(book.bookImage);
    book.save();
 });
+
+booksRouter.delete('/remove/:id',(req,res)=>{
+   
+  id = req.params.id;
+  console.log(id);
+  Bookdata.findByIdAndDelete({"_id":id})
+  .then(()=>{
+      console.log('success')
+      res.send();
+  })
+})
   module.exports=booksRouter;
 
   function verifyToken(req,res,next){

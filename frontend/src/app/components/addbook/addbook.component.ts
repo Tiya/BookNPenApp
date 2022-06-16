@@ -13,7 +13,7 @@ export class AddbookComponent implements OnInit {
   image: any
   pdffile: any
   constructor(private bookdataService: BookdataService,  private router: Router) { }
-  bookItem= new BooksModel("","","","","","","");
+  bookItem= new BooksModel(0,"","","","","","","");
   ngOnInit(): void {
   }
   AddBook()

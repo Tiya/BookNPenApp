@@ -25,12 +25,23 @@ export class BooksComponent implements OnInit {
     this.bookdataService.getBooks().subscribe((data)=>{
       this.books=JSON.parse(JSON.stringify(data));
      
-      console.log(this.books);
+      
       this.bookImage = this.books[0].bookImage.data;
        this.getPicture();
      
     })
+
   }
+
+  deleteBook(book: any)
+  {
+    console.log(book._id);
+    this.bookdataService.deleteBook(book._id)
+      .subscribe((data) => {
+        this.books = this.books.filter(p => p !== book);
+      });
+  
+    }
   getPicture() {
     let reader = new FileReader();
     reader.readAsDataURL(this.bookImage);
