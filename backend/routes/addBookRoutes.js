@@ -24,10 +24,10 @@ var dir = '../frontend/src/assets/images';
   booksRouter.use(cors());
   booksRouter.use(bodyparser.json());
 
-  booksRouter.use('/images', express.static(path.join('../frontend/src/assets/images')));
+  booksRouter.use('/images', express.static(path.join('../frontend/src/assets/images/files')));
   const storage = multer.diskStorage({
     destination:(req,file, callback)=>{
-      callback(null, '../frontend/src/assets/images')
+      callback(null, '../frontend/src/assets/images/files')
     },
     filename:(req, file, callback)=>{
       callback(null, file.fieldname+Date.now()+path.extname(file.originalname));
@@ -75,8 +75,8 @@ function checkFileType(file, callback){
     res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
     //console.log(req.body.bookName);
     //const file=req.files;
-    //console.log("file::::"+req.files.file[0].filename);
-    //console.log("images:::"+req.files.image[0].filename);
+    console.log("file::::"+req.files.file[0].filename);
+    console.log("images:::"+req.files.image[0].filename);
    
     var book = {       
        
@@ -84,12 +84,14 @@ function checkFileType(file, callback){
         bookAuthor : req.body.bookAuthor,
         bookCategory : req.body.bookCategory,
         bookDescription : req.body.bookDescription,
+        bookImagePath : req.files.image[0].filename,
+        bookFilePath : req.files.file[0].filename,
         bookFile: {
-          data:fs.readFileSync(path.join('../frontend/src/assets/images/' + req.files.file[0].filename)),
+          data:fs.readFileSync(path.join('../frontend/src/assets/images/files/' + req.files.file[0].filename)),
           contentType: 'image/png',
         }, 
         bookImage:{
-          data: fs.readFileSync(path.join('../frontend/src/assets/images/' + req.files.image[0].filename)), 
+          data: fs.readFileSync(path.join('../frontend/src/assets/images/files/' + req.files.image[0].filename)), 
         contentType: 'image/png',
       }
                

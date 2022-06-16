@@ -18,6 +18,8 @@ const Schema= mongoose.Schema;
 const BookSchema=new Schema({
     bookId : Number,
     bookName : String,
+    bookImagePath: String,
+    bookFilePath : String,
     bookFile : {
         data: Buffer,
         contentType: String

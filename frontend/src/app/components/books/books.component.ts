@@ -11,13 +11,13 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class BooksComponent implements OnInit {
   title:String = 'Book List';
-  books: BooksModel[]=[];
- 
+ books: BooksModel[]=[];
 
   //image properties
  // imageWidth: number=50;
  // imageMargin: number=2;
  thumbnail: any;
+  bookImage: any;
 
   constructor(private sanitizer: DomSanitizer, private bookdataService: BookdataService) { }
 
@@ -26,9 +26,18 @@ export class BooksComponent implements OnInit {
       this.books=JSON.parse(JSON.stringify(data));
      
       console.log(this.books);
-      this.thumbnail=this.books[0].bookImage;
-      this.getImageUrl(this.thumbnail)
+      this.bookImage = this.books[0].bookImage.data;
+       this.getPicture();
+     
     })
+  }
+  getPicture() {
+    let reader = new FileReader();
+    reader.readAsDataURL(this.bookImage);
+    reader.onloadend = (() => {
+       let objectURL = reader.result;
+       this.thumbnail = this.sanitizer.bypassSecurityTrustResourceUrl('' + objectURL);
+    });
   }
  
   getImageUrl(book: any) {
