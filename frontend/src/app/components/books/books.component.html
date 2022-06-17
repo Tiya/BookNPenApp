@@ -32,7 +32,6 @@
                                             </h3>
                                         </th>
                                         <th class="text-center" scope="col"></th>
-                                        <th class="text-center" scope="col"></th>
                                     </tr>
                             </thead>
                 <tbody>
@@ -63,12 +62,9 @@
                         </td>
                        
                         <td>
-                          <button class="btn btn-info" style="cursor:pointer; margin-right: 20px; transition: ease-in-out;"> Read More</button>
+                          <button class="btn btn-info" (click)="onClick(book._id)"  style="cursor:pointer; margin-right: 20px; transition: ease-in-out;"> Read More</button>
                         </td>
-						 <td>
-                          <button class="btn btn-warning" style="cursor:pointer"  style="margin-right: 20px;" (click)="editBook(book)"> Edit</button>
-                          <button class="btn btn-danger" style="cursor:pointer" (click)="deleteBook(book)"> Delete</button>
-                        </td>
+
                       </tr>   
                 </tbody>
             </table>

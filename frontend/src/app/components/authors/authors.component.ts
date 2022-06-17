@@ -32,22 +32,11 @@ export class AuthorsComponent implements OnInit {
     })
   }
 
-  
-  deleteAuthor(author: any)
-  {
-    console.log(author._id);
-    this.authordataService.deleteAuthor(author._id)
-      .subscribe((data) => {
-        this.authors = this.authors.filter(p => p !== author);
-      });
-  
+  onClick(authorid:number){
+    this.router.navigate(['/author',authorid]),{
+      queryParams :{'testParam':'testvalue'}
     }
-  editAuthor(author:any)
-  {
-    localStorage.setItem("editAuthorId", author._id.toString());
-    this.router.navigate(['update']);
-
-  }
+   }
   getPicture() {
     let reader = new FileReader();
     reader.readAsDataURL(this.authorimage);

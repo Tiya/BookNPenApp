@@ -24,7 +24,7 @@ export class BooksComponent implements OnInit {
  // imageMargin: number=2;
 
 
-  constructor(private sanitizer: DomSanitizer, private bookdataService: BookdataService, private router:Router) { }
+  constructor(private sanitizer: DomSanitizer, private bookdataService: BookdataService, private router:Router,public _authservice:AuthService) { }
   ngOnInit(): void {
     this.bookdataService.getBooks().subscribe((data)=>{
       this.books=JSON.parse(JSON.stringify(data));
@@ -36,21 +36,11 @@ export class BooksComponent implements OnInit {
 
   }
 
-  deleteBook(book: any)
-  {
-    console.log(book._id);
-    this.bookdataService.deleteBook(book._id)
-      .subscribe((data) => {
-        this.books = this.books.filter(p => p !== book);
-      });
-  
-    }
-  editBook(book:any)
-  {
-    localStorage.setItem("editBookId", book._id.toString());
-    this.router.navigate(['update']);
-
+ onClick(bookid:number){
+  this.router.navigate(['/book',bookid]),{
+    queryParams :{'testParam':'testvalue'}
   }
+ }
   getPicture() {
     let reader = new FileReader();
     reader.readAsDataURL(this.bookImage);

@@ -30,10 +30,10 @@ console.log("id to delete", id);
 
   }
   //update a author
-  editAuthor(book:any)
+  editAuthor(author:any)
   {
     console.log('Author update')
-    return this.http.put("http://localhost:3000/authors/update",book)
+    return this.http.put("http://localhost:3000/authors/update",author)
     .subscribe(data =>{console.log(data)})
   }
 }

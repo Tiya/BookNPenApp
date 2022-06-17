@@ -20,7 +20,6 @@
                                         <th scope="col">Authors Image</th>
                                         <th scope="col">Authors Name</th>
                                         <th class="text-center" scope="col"></th>
-                                        <th class="text-center" scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -44,14 +43,11 @@
                                        
                                         <td>
                                             <div class="primary-btn">
-                                                <button class="btn btn-info" style="cursor:pointer; transition: ease-in-out;"> Read More</button>
+                                                <button class="btn btn-info" (click)="onClick(author._id)" style="cursor:pointer; transition: ease-in-out;"> Read More</button>
                                             </div>
                                         </td>
 
-                                        <td>
-                                            <button class="btn btn-warning" style="cursor:pointer"  style="margin-right: 20px;" (click)="editAuthor(author)"> Edit</button>
-                                            <button class="btn btn-danger" style="cursor:pointer" (click)="deleteAuthor(author)"> Delete</button>
-                                          </td>
+                                     
                                     </tr>
                                     
                                 </tbody>

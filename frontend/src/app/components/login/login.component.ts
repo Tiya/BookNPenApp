@@ -11,6 +11,14 @@ export class LoginComponent implements OnInit {
 
   loginUserData: any = {}
 
+//    Adminusers:any={
+//     "_id":1,
+//     "username":"Admin",
+//     "email":"admin@domain.com",
+//     "password":"admin1234",
+//     "role":"Admin"
+// }
+
   constructor(private _auth: AuthService,
     private _router: Router) { }
 

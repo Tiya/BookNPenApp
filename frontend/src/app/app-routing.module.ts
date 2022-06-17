@@ -26,7 +26,7 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 ,canActivate:[AuthGuard]
 },
 {path:'addbook',component:AddbookComponent,canActivate:[AuthGuard
-  // , HasRoleGuard
+  , HasRoleGuard
 ]
 // ,data:{roles:['Admin','Author']
 // }
