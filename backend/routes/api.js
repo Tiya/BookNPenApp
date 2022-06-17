@@ -3,9 +3,9 @@ const router = express.Router();
 const User = require('../models/user');
 const mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
-const db = "mongodb+srv://admin:1289lash@users.rs1bqhv.mongodb.net/?retryWrites=true&w=majority";
+// const db = "mongodb+srv://admin:1289lash@users.rs1bqhv.mongodb.net/?retryWrites=true&w=majority";
 
-// const db = "mongodb+srv://FSDGroup3:fsdgp3.123@cluster0.1f3izav.mongodb.net/?retryWrites=true&w=majority";
+const db = "mongodb+srv://FSDGroup3:Fsdgp3.123@cluster0.1f3izav.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(db, err=>{
     if(err){
