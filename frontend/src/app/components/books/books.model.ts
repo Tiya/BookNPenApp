@@ -5,7 +5,7 @@ export class BooksModel{
        public bookName: string,
        public bookAuthor: string,
        public bookCategory: string,
-       public bookDescription: string,9
+       public bookDescription: string,
        public bookImagePath: string,
        public bookFilePath : string,
        public bookImage: any

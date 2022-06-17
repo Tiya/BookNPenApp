@@ -35,7 +35,7 @@ export class BooksComponent implements OnInit {
     })
 
   }
-  
+
   deleteBook(book: any)
   {
     console.log(book._id);
@@ -43,6 +43,7 @@ export class BooksComponent implements OnInit {
       .subscribe((data) => {
         this.books = this.books.filter(p => p !== book);
       });
+  
     }
   editBook(book:any)
   {

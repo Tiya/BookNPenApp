@@ -13,8 +13,6 @@ export class AddbookComponent implements OnInit {
   image: any
   pdffile: any
   constructor(private bookdataService: BookdataService,  private router: Router) { }
-  // bookItem= new BooksModel("","","","");
- 
   bookItem= new BooksModel(0,"","","","","","","");
   ngOnInit(): void {
   }
@@ -30,11 +28,8 @@ export class AddbookComponent implements OnInit {
     
    // this.bookdataService.newBook(this.bookItem);
    this.bookdataService.newBook(formData);
-   this.bookItem.bookImage=this.image.data;
-   this.bookItem.bookFile=this.pdffile.data;
   //  this.bookItem.bookImage=this.image.data;
   //  this.bookItem.bookFile=this.pdffile.data;
-
     console.log("called");
     alert("Success");
     this.router.navigate(['/books']);

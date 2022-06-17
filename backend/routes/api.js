@@ -7,14 +7,14 @@ const db = "mongodb+srv://admin:1289lash@users.rs1bqhv.mongodb.net/?retryWrites=
 
 // const db = "mongodb+srv://FSDGroup3:fsdgp3.123@cluster0.1f3izav.mongodb.net/?retryWrites=true&w=majority";
 
-// mongoose.connect(db, err=>{
-//     if(err){
-//         console.log('Error!' + err);
-//     }
-//     else{
-//         console.log('Connected to MongoDB')
-//     }
-// })
+mongoose.connect(db, err=>{
+    if(err){
+        console.log('Error!' + err);
+    }
+    else{
+        console.log('Connected to MongoDB')
+    }
+})
 
 router.get('/',(req,res)=>{
     res.send('Hello from API route');
