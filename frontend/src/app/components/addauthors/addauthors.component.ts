@@ -12,7 +12,7 @@ export class AddauthorsComponent implements OnInit {
   title:String="Add an Author";
   image: any
   constructor(private authorService:AuthordataService ,  private router: Router) { }
-  authorItem= new AuthorModel("","");
+  authorItem= new AuthorModel(0,"","","","");
   ngOnInit(): void {
   }
   AddAuthor()

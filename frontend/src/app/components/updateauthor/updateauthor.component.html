@@ -1,0 +1,45 @@
+<p>updateauthor works!</p>
+
+<div class='card'>
+    <form (ngSubmit)="editAuthor()">
+<div class='card-header'>
+ Update Author Details
+</div>
+<div class='card-body'>            
+  <div class='table-responsive'>
+    <table class='table'>       
+    
+      <tbody class="tbody">  
+          <!-- <tr>
+              <td> <label>Product Id</label></td>
+              <td><input type="text" name="book_id" [(ngModel)]="productItem.productId"/></td>                  
+            </tr>    -->
+            <tr>
+                <td class="td1"><label>Author Name</label></td>
+                <td class="td1"><input type="text"  name="authorname" [(ngModel)]="authorItem.authorname"/></td>                  
+              </tr>  
+              <tr>
+                <td><label>About Author</label></td>
+                <td><input type="text"  name="aboutauthor" [(ngModel)]="authorItem.aboutauthor"/></td>                  
+              </tr>  
+              <tr>
+                <div>
+                 <td><label>Upload Author Image</label></td>
+                 <td> <input (change)="onImageSelect($event)" name="image" type="file" [disabled]="true"></td>
+                </div>
+              </tr> 
+              
+              <tr>
+                <td></td>
+                <td class="submit"><input type="submit" value="Submit" id="submit" /></td>                  
+              </tr>             
+      </tbody>
+    </table>
+  </div>
+</div>
+</form>
+</div>
+
+   
+
+

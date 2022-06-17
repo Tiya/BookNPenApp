@@ -43,7 +43,7 @@ var dir = '../frontend/src/assets/images';
   var upload = multer({
     storage: storage,
     limits:{
-      fileSize: 1000000  //upto 1MB files only
+      fileSize: 10000000  //upto 10MB files only
     },
     fileFilter:function(req,file,callback){
       checkFileType(file, callback);
@@ -65,7 +65,7 @@ function checkFileType(file, callback){
     callback('Error: Images only');
   }
 }
-booksRouter.get('/:id',  (req, res) => {
+booksRouter.get('/:id',verifyToken,  (req, res) => {
   
   const id = req.params.id;
   Bookdata.findOne({"_id":id})
@@ -121,7 +121,7 @@ booksRouter.get('/:id',  (req, res) => {
    book.save();
 });
 
-booksRouter.delete('/remove/:id',(req,res)=>{
+booksRouter.delete('/remove/:id',verifyToken,(req,res)=>{
    
   id = req.params.id;
   console.log(id);
@@ -132,7 +132,7 @@ booksRouter.delete('/remove/:id',(req,res)=>{
   })
 })
 
-booksRouter.put('/update', upload.fields([
+booksRouter.put('/update',verifyToken, upload.fields([
   {name: "file", maxCount: 1},
   {name: "image", maxCount: 1},
 ]),(req,res)=>{

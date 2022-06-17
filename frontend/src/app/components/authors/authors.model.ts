@@ -1,10 +1,9 @@
 export class AuthorModel{
     constructor(
+        public _id: number,
         public authorname: string,
         public aboutauthor: string,
-    //  public authorimage : {
-    //      data: Buffer,
-    //      contentType: String
-    //  }
+        public authorImagePath: string,
+       public authorimage: any
     ){}
  }

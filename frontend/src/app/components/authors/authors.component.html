@@ -20,6 +20,7 @@
                                         <th scope="col">Authors Image</th>
                                         <th scope="col">Authors Name</th>
                                         <th class="text-center" scope="col"></th>
+                                        <th class="text-center" scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -30,9 +31,10 @@
                                             </div>
                                         </th>
                                         <td>
-                                            <div class="event-img">
-                                                <img style="width: 50%; height: 50%; border-radius: 50px; padding: 5px;" class="shadow" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" />
-                                            </div>
+                                           
+                            
+                                <img style="width: 100px; border-radius: 50px; padding: 5px;" class="shadow" src="assets/images/files/{{author.authorimage}}" alt="" />
+                        
                                         </td>
                                         <td>
                                             <div class="event-wrap">
@@ -45,6 +47,11 @@
                                                 <button class="btn btn-info" style="cursor:pointer; transition: ease-in-out;"> Read More</button>
                                             </div>
                                         </td>
+
+                                        <td>
+                                            <button class="btn btn-warning" style="cursor:pointer"  style="margin-right: 20px;" (click)="editAuthor(author)"> Edit</button>
+                                            <button class="btn btn-danger" style="cursor:pointer" (click)="deleteAuthor(author)"> Delete</button>
+                                          </td>
                                     </tr>
                                     
                                 </tbody>

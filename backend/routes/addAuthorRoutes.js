@@ -3,20 +3,27 @@ const Authordata = require('../models/AuthorData')
 const authorRouter =express.Router();
 const multer = require('multer');
 const path = require('path');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const cors = require('cors');
+var bodyparser=require('body-parser');
 require("dotenv")
   .config();
 
-  var fs = require('fs');
+  authorRouter.use(cors());
 
   console.log("in addAuthorRoutes");
-    const cors = require('cors');
-    var bodyparser=require('body-parser');
-    authorRouter.use(bodyparser.urlencoded({
-      extended: true
-  }));
+    // authorRouter.use(bodyparser.urlencoded({
+    //   limit: "200mb",
+    //   type:'application/json'
+    //   }));
+
+      authorRouter.use(bodyparser.urlencoded({
+        limit: "200mb",  
+        extended: true,
+        parameterLimit: 1000000
+      }));
     var fs = require('fs');
-  var dir = './public/uploads';
+  var dir = '../frontend/src/assets/images';
   
     if (!fs.existsSync(dir)){
       // console.log("new: "+dir);
@@ -26,16 +33,14 @@ require("dotenv")
     authorRouter.use(cors());
   authorRouter.use(bodyparser.json());
 
-// Multer Setting Up
-const storage=multer.diskStorage({
-    //destination for files
-    destination:function(request,file,cb){
-      cb(null,'./public/uploads');
+
+  authorRouter.use('/images', express.static(path.join('../frontend/src/assets/images/files')));
+  const storage = multer.diskStorage({
+    destination:(req,file, callback)=>{
+      callback(null, '../frontend/src/assets/images/files')
     },
-    //Add back the extensions
-    filename:function(request,file, cb){
-     // Defining file name+timestamp+.file-extension
-      cb(null,file.fieldname+Date.now()+path.extname(file.originalname));
+    filename:(req, file, callback)=>{
+      callback(null, file.fieldname+Date.now()+path.extname(file.originalname));
     }
   })
   
@@ -44,7 +49,7 @@ const storage=multer.diskStorage({
   const upload = multer({ 
     storage: storage,
     limits:{
-      fileSize: 1000000     //upto 1MB files only
+      fileSize: 10000000     //upto 10MB files only
     },
     fileFilter:function(req,file,cb){
       checkFileType(file, cb);
@@ -78,18 +83,29 @@ const storage=multer.diskStorage({
             })
   })    
 
+  authorRouter.get('/:id',verifyToken,  (req, res) => {
+  
+    const id = req.params.id;
+    Authordata.findOne({"_id":id})
+      .then((author)=>{
+          res.send(author);
+      });
+  })
+
   authorRouter.post('/insert',verifyToken, upload.fields([
     {name: "image", maxCount: 1},
   ]),function(req,res){
     res.header("Access-Control-Allow-Origin","*")
     res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
-  
+    console.log("images:::"+req.files.image[0].filename);
+
     var author = {       
         authorname : req.body.authorname,
         aboutauthor : req.body.aboutauthor,
+        authorImagePath : req.files.image[0].filename,
         authorimage: {
-                data: fs.readFileSync(path.join('./public/uploads/' + req.files.image[0].filename)), 
-                contentType: 'images/png',
+                data: fs.readFileSync(path.join('../frontend/src/assets/images/files/' + req.files.image[0].filename)), 
+                contentType: 'image/png',
                     }
    }       
    
@@ -97,6 +113,51 @@ const storage=multer.diskStorage({
   // console.log(author);
    author.save();
 });
+
+
+authorRouter.delete('/remove/:id',verifyToken,(req,res)=>{
+   
+  id = req.params.id;
+  console.log(id);
+  Authordata.findByIdAndDelete({"_id":id})
+  .then(()=>{
+      console.log('success')
+      res.send();
+  })
+})
+
+authorRouter.put('/update',verifyToken, upload.fields([
+  {name: "file", maxCount: 1},
+  {name: "image", maxCount: 1},
+]),(req,res)=>{
+  res.header("Access-Control-Allow-Origin","*")
+  res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
+  console.log(req.body)
+ // console.log("file::::update:::"+req.files.file[0].filename);
+  //console.log("images:::update:::"+req.files.image[0].filename);
+  id=req.body._id,
+        authorname = req.body.authorname,
+        aboutauthor = req.body.aboutauthor,
+//  authorImagePath = req.files.image[0].filename,
+
+//   authorimage={
+//     data: fs.readFileSync(path.join('../frontend/src/assets/images/files/' + req.files.image[0].filename)), 
+//   contentType: 'image/png',      
+ 
+  Authordata.findByIdAndUpdate({"_id":id},
+                              {$set:{
+                              "authorname":authorname,
+                              "aboutauthor":aboutauthor,
+                              // "authorImagePath":authorImagePath,
+                              // "authorImage":authorImage,
+                              }})
+ .then(function(){
+  
+     res.send();
+ })
+})
+
+
   module.exports=authorRouter;
 
   function verifyToken(req,res,next){
