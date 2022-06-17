@@ -17,6 +17,7 @@ import { AuthorsComponent } from './components/authors/authors.component';
 import { AddauthorsComponent } from './components/addauthors/addauthors.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { UpdatebookComponent } from './components/updatebook/updatebook.component';
 import { GenresComponent } from './components/genres/genres.component';
 import { AuthorComponent } from './components/author/author.component';
 import { BookComponent } from './components/book/book.component';
@@ -33,6 +34,7 @@ import { BookComponent } from './components/book/book.component';
     BooksComponent,
     AuthorsComponent,
     AddauthorsComponent,
+    UpdatebookComponent,
     GenresComponent,
     AuthorComponent,
     BookComponent
