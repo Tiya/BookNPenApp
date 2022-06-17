@@ -13,7 +13,8 @@ export class AuthGuard implements CanActivate {
     if (this.jwtAuth.loggedIn()) {
       return true;
     } else {
-      this.router.navigate(["/home"], {
+      alert('Please login to access the pages')
+      this.router.navigate(["/dashboard"], {
         queryParams: {
           return: state.url
         }
@@ -21,7 +22,4 @@ export class AuthGuard implements CanActivate {
       return false;
     }
   }
-    // route: ActivatedRouteSnapshot,
-    // state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    // return true;
   }

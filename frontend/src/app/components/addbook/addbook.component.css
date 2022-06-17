@@ -1,4 +1,3 @@
-
 .table{
     border: 3px solid orangered;
     padding-top: 20px;
@@ -41,6 +40,7 @@ td {
     padding-bottom: 10px;
     padding-top: 10px;
     margin-bottom: 20px;
+    border-radius: 50%;
 }
 .td1{
     padding-top: 30px;
@@ -49,4 +49,3 @@ td {
 {
    padding-top:30px ;
 }
-

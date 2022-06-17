@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { BookdataService } from 'src/app/services/bookdata.service';
 import {BooksModel} from './books.model';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -11,24 +12,26 @@ import { Router } from '@angular/router';
 })
 export class BooksComponent implements OnInit {
   title:String = 'Book List';
- books: BooksModel[]=[];
+
+  books: BooksModel[]=[];
+  myPDF: Uint8Array | undefined;
+  blob: Blob | undefined;
+  thumbnail: any;
+  bookImage:any;
 
   //image properties
  // imageWidth: number=50;
  // imageMargin: number=2;
- thumbnail: any;
-  bookImage: any;
+
 
   constructor(private sanitizer: DomSanitizer, private bookdataService: BookdataService, private router:Router) { }
-
   ngOnInit(): void {
     this.bookdataService.getBooks().subscribe((data)=>{
       this.books=JSON.parse(JSON.stringify(data));
-     
-      
+  
       this.bookImage = this.books[0].bookImage.data;
        this.getPicture();
-     
+
     })
 
   }

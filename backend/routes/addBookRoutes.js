@@ -23,10 +23,10 @@ console.log("in addBookRoutes");
 var dir = '../frontend/src/assets/images';
 
   if (!fs.existsSync(dir)){
-    console.log("new: "+dir);
+    // console.log("new: "+dir);
       fs.mkdirSync(dir);
   }
-  console.log("old: "+dir);
+  // console.log("old: "+dir);
   
   booksRouter.use(cors());
 
@@ -43,7 +43,7 @@ var dir = '../frontend/src/assets/images';
   var upload = multer({
     storage: storage,
     limits:{
-      fileSize: 1000000
+      fileSize: 1000000  //upto 1MB files only
     },
     fileFilter:function(req,file,callback){
       checkFileType(file, callback);
@@ -81,7 +81,7 @@ booksRouter.get('/:id',  (req, res) => {
             })
   })    
 
-  booksRouter.post('/insert', upload.fields([
+  booksRouter.post('/insert',verifyToken,upload.fields([
     {name: "file", maxCount: 1},
     {name: "image", maxCount: 1},
   ]),function(req,res){
@@ -176,6 +176,7 @@ booksRouter.put('/update', upload.fields([
 })
 
   module.exports=booksRouter;
+
 
   function verifyToken(req,res,next){
     if(!req.headers.authorization){

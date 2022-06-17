@@ -22,12 +22,12 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-lg-8 text-center">
-                <h2 class="text-white mt-0">Build you library with your favourite Book Summaries</h2>
+                <h2 class="text-white mt-0">Build Your Library with your Favourite Books</h2>
                 <hr class="divider divider-light" />
                 <p class="text-white-75 mb-4">Discover books, shorts, and book summaries
                   on-the-go with a single app. With the BookNPen Select
                   Summaries, you now have access to key insights
-                  from international bestsellers. Here's everything you
+                  from award winninb collections. Here's everything you
                   need to set reading goals for a better life!</p>
                 <a class="btn btn-light btn-xl" (click)="onClick('signup')">Get Started!</a>
             </div>
@@ -97,26 +97,34 @@
                 <form id="contactForm" data-sb-form-api-token="API_TOKEN">
                     <!-- Name input-->
                     <div class="form-floating mb-3">
-                        <input class="form-control" [(ngModel)]="registerUserData.username" name="username" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                        <input autocomplete="off" class="form-control" [(ngModel)]="registerUserData.username" name="username" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                         <label for="name">Full name</label>
                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                     </div>
                     <!-- Email address input-->
                     <div class="form-floating mb-3">
-                        <input class="form-control" [(ngModel)]="registerUserData.email" name="email" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                        <input autocomplete="off" class="form-control" [(ngModel)]="registerUserData.email" name="email" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
                         <label for="email">Email address</label>
                         <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                         <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
                     </div>
                     <!-- Phone number input-->
                     <div class="form-floating mb-3">
-                        <input class="form-control" [(ngModel)]="registerUserData.password" name="password"  id="password" type="password" placeholder="Enter Password" data-sb-validations="required" />
+                        <input autocomplete="off" class="form-control" [(ngModel)]="registerUserData.password" name="password"  id="password" type="password" placeholder="Enter Password" data-sb-validations="required" />
                         <label for="password">Password</label>
                         <div class="invalid-feedback" data-sb-feedback="password:required">A Password is required.</div>
                     </div>
+
+                        <!-- <div class="form-check" *ngFor="let n of role">
+                          <input class="form-check-input" [checked]="n.select"  [ngValue]="n.name" type="radio" name="role" id="flexRadioDefault2">
+                          <label class="form-check-label" for="flexRadioDefault2">
+                            {{n.name}}
+                          </label>
+                        </div> -->
                     <small class="text-muted align-items-center">By clicking Sign up, you agree to the terms of use.</small>
                     <br>
                     <br>
+
                     <!-- Submit success message-->
                     <!-- This is what your users will see when the form has successfully submitted-->
                     <div class="d-none" id="submitSuccessMessage">
@@ -126,6 +134,8 @@
                             <br />
                         </div>
                     </div>
+
+                    
                     <!-- Submit error message-->
                     <!-- This is what your users will see when there is an error submitting the form-->
                     <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>

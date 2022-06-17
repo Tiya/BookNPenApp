@@ -11,14 +11,15 @@
           <div class="modal-body p-5 pt-0">
             <form class="">
               <div class="form-floating mb-3">
-                <input type="email" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com" [(ngModel)]="loginUserData.email" name="email" required>
+                <input autocomplete="off" type="email" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com" [(ngModel)]="loginUserData.email" name="email" required>
                 <label for="floatingInput">Email address</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password" [(ngModel)]="loginUserData.password" name="password" required>
+                <input autocomplete="off" type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password" [(ngModel)]="loginUserData.password" name="password" required>
                 <label for="floatingPassword">Password</label>
               </div>
               <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" data-bs-dismiss="modal" id="closemodal" type="submit"  (click)="loginUser()">LOGIN</button>
+              <small><i>For Admin Login use Email as <b>admin@domain.com</b>  and Password <b>admin1234</b></i></small>
               <hr class="m-4">
             </form>
           </div>

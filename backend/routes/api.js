@@ -3,31 +3,37 @@ const router = express.Router();
 const User = require('../models/user');
 const mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
-const db = "mongodb+srv://admin:1289lash@users.rs1bqhv.mongodb.net/?retryWrites=true&w=majority";
+// const db = "mongodb+srv://admin:1289lash@users.rs1bqhv.mongodb.net/?retryWrites=true&w=majority";
 
-// const db = "mongodb+srv://FSDGroup3:fsdgp3.123@cluster0.1f3izav.mongodb.net/?retryWrites=true&w=majority";
+const db = "mongodb+srv://FSDGroup3:Fsdgp3.123@cluster0.1f3izav.mongodb.net/?retryWrites=true&w=majority";
 
-// mongoose.connect(db, err=>{
-//     if(err){
-//         console.log('Error!' + err);
-//     }
-//     else{
-//         console.log('Connected to MongoDB')
-//     }
-// })
+mongoose.connect(db, err=>{
+    if(err){
+        console.log('Error!' + err);
+    }
+    else{
+        console.log('Connected to MongoDB')
+    }
+})
 
 router.get('/',(req,res)=>{
     res.send('Hello from API route');
 })
 
 router.post('/signup', (req,res)=>{
-    let userData = req.body;
-    let user = new User(userData);
-    user.save((error,resgisteredUser)=>{
+    let userData = new User({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+        role:'Author'
+      });
+    // let user = new User(userData);
+    userData.save((error,resgisteredUser)=>{
         if(error){
             console.log(error);
         }
         else{
+
             let payload={subject:resgisteredUser._id};
             let token =jwt.sign(payload,'secretKey')
             res.status(200).send({token});
@@ -56,7 +62,7 @@ router.post('/login',(req,res)=>{
                 res.status(401).send('Invalid Password');
             }
             else{
-                let payload={subject:user._id};
+                let payload={subject:user};
                 let token =jwt.sign(payload,'secretKey')
                 res.status(200).send({token});
                 // res.status(200).send(user);

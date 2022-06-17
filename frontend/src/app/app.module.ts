@@ -7,7 +7,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { AddbookComponent } from './components/addbook/addbook.component';
 import { AuthService } from './services/auth.service';
@@ -18,7 +18,9 @@ import { AddauthorsComponent } from './components/addauthors/addauthors.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { UpdatebookComponent } from './components/updatebook/updatebook.component';
-
+import { GenresComponent } from './components/genres/genres.component';
+import { AuthorComponent } from './components/author/author.component';
+import { BookComponent } from './components/book/book.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,10 @@ import { UpdatebookComponent } from './components/updatebook/updatebook.componen
     BooksComponent,
     AuthorsComponent,
     AddauthorsComponent,
-    UpdatebookComponent
+    UpdatebookComponent,
+    GenresComponent,
+    AuthorComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,8 @@ import { UpdatebookComponent } from './components/updatebook/updatebook.componen
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService,{
     provide : HTTP_INTERCEPTORS,

@@ -1,1 +1,40 @@
-<p>addauthors works!</p>
+<div class='card m-5'>
+    <form (ngSubmit)="AddAuthor()">
+        <div class='card-header'>
+  Add Author
+  </div>
+  <div class='card-body shadow'>            
+  <div class='table-responsive'>
+    <table class='table'>       
+    
+      <tbody class="tbody">  
+          <!-- <tr>
+              <td> <label>Product Id</label></td>
+              <td><input type="text" name="book_id" [(ngModel)]="productItem.productId"/></td>                  
+            </tr>    -->
+            <tr>
+                <td class="td1"><label>Author Name</label></td>
+                <td><input type="text" name="authorname" autocomplete="off" required [(ngModel)]="authorItem.authorname"/></td>                  
+            </tr>  
+            <tr>
+              <td><label>About Author</label></td>
+              <td><input type="text" name="aboutauthor" autocomplete="off" required [(ngModel)]="authorItem.aboutauthor"/></td>  
+            </tr>  
+            <tr>
+              <div>
+               <td><label>Upload Author Image</label></td>
+                 <td> <input (change)="onImageSelect($event)" required name="image" type="file"></td>
+                </div>
+              </tr> 
+            
+              
+              <tr>
+                <td></td>
+                <td class="submit"><input type="submit" value="Submit" id="submit" /></td>                  
+              </tr>             
+      </tbody>
+    </table>
+  </div>
+  </div>
+  </form>
+  </div>

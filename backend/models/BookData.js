@@ -2,8 +2,11 @@
 const mongoose=require('mongoose');
 
 //Database connection
+// mongoose.connect("mongodb+srv://admin:1289lash@users.rs1bqhv.mongodb.net/?retryWrites=true&w=majority");
+//Database connection
 //mongoose.connect('mongodb+srv://tiyamartin:Tiya.7256@tiyadatabase.bn7ry.mongodb.net/BookNPen?retryWrites=true&w=majority');
-mongoose.connect('mongodb+srv://FSDGroup3:Fsdgp3.123@cluster0.1f3izav.mongodb.net/BookNPen?retryWrites=true&w=majority');
+
+// mongoose.connect('mongodb+srv://FSDGroup3:Fsdgp3.123@cluster0.1f3izav.mongodb.net/BookNPen?retryWrites=true&w=majority');
 
 var conn = mongoose.connection;
 conn.on('connected', function() {
