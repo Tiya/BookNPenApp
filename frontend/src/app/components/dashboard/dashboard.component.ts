@@ -1,5 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 export interface Tile {
   color: string;
@@ -14,7 +15,8 @@ export interface Tile {
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private viewportScroller: ViewportScroller) { }
+  
+  constructor(private viewportScroller: ViewportScroller, private route:ActivatedRoute) { }
 
   public onClick(elementId: string): void { 
     this.viewportScroller.scrollToAnchor(elementId);

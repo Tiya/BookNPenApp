@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       alert('Please login to access the pages')
-      this.router.navigate(["/home"], {
+      this.router.navigate(["/dashboard"], {
         queryParams: {
           return: state.url
         }
@@ -22,7 +22,4 @@ export class AuthGuard implements CanActivate {
       return false;
     }
   }
-    // route: ActivatedRouteSnapshot,
-    // state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    // return true;
   }

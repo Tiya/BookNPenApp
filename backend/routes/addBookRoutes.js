@@ -3,6 +3,7 @@ const booksRouter=express.Router();
 const Bookdata = require('../models/BookData');
 const multer=require('multer')
 const jwt = require('jsonwebtoken');
+var sharp = require('sharp');
 
 const path = require('path');
 var fs = require('fs');
@@ -14,7 +15,9 @@ console.log("in addBookRoutes");
     extended: true
 }));
   var fs = require('fs');
-var dir = './public/uploads';
+// var dir = './public/uploads';
+var dir = '../frontend/src/assets/images';
+
 
   if (!fs.existsSync(dir)){
     // console.log("new: "+dir);
@@ -24,9 +27,13 @@ var dir = './public/uploads';
   
   booksRouter.use(cors());
   booksRouter.use(bodyparser.json());
+
+  booksRouter.use('/images', express.static(path.join('../frontend/src/assets/images')));
   const storage = multer.diskStorage({
     destination:(req,file, callback)=>{
-      callback(null, './public/uploads')
+      // callback(null, './public/uploads')
+      callback(null, '../frontend/src/assets/images')
+
     },
     filename:(req, file, callback)=>{
       callback(null, file.fieldname+Date.now()+path.extname(file.originalname));
@@ -35,7 +42,7 @@ var dir = './public/uploads';
   var upload = multer({
     storage: storage,
     limits:{
-      fileSize: 1000000  //upto 1MB files only
+      fileSize: 10000000  //upto 1MB files only
     },
     fileFilter:function(req,file,callback){
       checkFileType(file, callback);
@@ -86,13 +93,20 @@ function checkFileType(file, callback){
         bookCategory : req.body.bookCategory,
         bookDescription : req.body.bookDescription,
         bookFile: {
-          data: fs.readFileSync(path.join('./public/uploads/' + req.files.file[0].filename)), 
-          contentType: 'application/pdf',
-              },
-        bookImage: {
-                data: fs.readFileSync(path.join('./public/uploads/' + req.files.image[0].filename)), 
-                contentType: 'images/png',
-                    }
+        //   data: fs.readFileSync(path.join('./public/uploads/' + req.files.file[0].filename)), 
+        //   contentType: 'application/pdf',
+        //       },
+        // bookImage: {
+        //         data: fs.readFileSync(path.join('./public/uploads/' + req.files.image[0].filename)), 
+        //         contentType: 'images/png',
+        //             }
+        data:fs.readFileSync(path.join('../frontend/src/assets/images/' + req.files.file[0].filename)),
+        contentType: 'application/pdf',
+      }, 
+      bookImage:{
+        data: fs.readFileSync(path.join('../frontend/src/assets/images/' + req.files.image[0].filename)), 
+      contentType: 'image/png',
+    }
    }       
    
    var book = new Bookdata(book);
@@ -100,6 +114,17 @@ function checkFileType(file, callback){
   // console.log(book.bookImage);
    book.save();
 });
+
+booksRouter.delete('/remove/:id',(req,res)=>{
+   
+  id = req.params.id;
+  console.log(id);
+  Bookdata.findByIdAndDelete({"_id":id})
+  .then(()=>{
+      console.log('success')
+      res.send();
+  })
+})
   module.exports=booksRouter;
 
 

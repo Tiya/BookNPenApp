@@ -7,6 +7,13 @@ const api = require('./routes/api')
 const app =express();
 app.use(cors());
 app.use(bodyParser.json());
+
+app.use(function(res,req,next)
+    {
+        res.header("Access-Control-Allow-Origin","*")
+        res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE,OPTIONS');
+        next();
+})
 app.use('/api',api);
 app.get('/',(req,res)=>{
     res.send('Hello from Server');

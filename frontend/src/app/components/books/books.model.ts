@@ -4,13 +4,7 @@ export class BooksModel{
        public bookAuthor: string,
        public bookCategory: string,
        public bookDescription: string,
-    //    public bookFile : {
-    //     data: Buffer,
-    //     contentType: String
-    // },
-    // public bookImage : {
-    //     data: Buffer,
-    //     contentType: String
-    // },
+       public bookFile : string,
+       public bookImage: string
    ){}
 }
