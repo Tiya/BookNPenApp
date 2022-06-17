@@ -17,6 +17,8 @@ import { AuthorsComponent } from './components/authors/authors.component';
 import { AddauthorsComponent } from './components/addauthors/addauthors.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { UpdatebookComponent } from './components/updatebook/updatebook.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { MaterialModule } from './material/material.module';
     AddbookComponent,
     BooksComponent,
     AuthorsComponent,
-    AddauthorsComponent
+    AddauthorsComponent,
+    UpdatebookComponent
   ],
   imports: [
     BrowserModule,

@@ -10,9 +10,15 @@ var sharp = require('sharp');
 console.log("in addBookRoutes");
   const cors = require('cors');
   var bodyparser=require('body-parser');
+  booksRouter.use(bodyparser.json({
+    limit: "200mb",
+    type:'application/json'
+  }));
   booksRouter.use(bodyparser.urlencoded({
-    extended: true
-}));
+    limit: "200mb",  
+    extended: true,
+    parameterLimit: 1000000
+  }));
   var fs = require('fs');
 var dir = '../frontend/src/assets/images';
 
@@ -23,7 +29,7 @@ var dir = '../frontend/src/assets/images';
   console.log("old: "+dir);
   
   booksRouter.use(cors());
-  booksRouter.use(bodyparser.json());
+
 
   booksRouter.use('/images', express.static(path.join('../frontend/src/assets/images/files')));
   const storage = multer.diskStorage({
@@ -59,7 +65,14 @@ function checkFileType(file, callback){
     callback('Error: Images only');
   }
 }
-
+booksRouter.get('/:id',  (req, res) => {
+  
+  const id = req.params.id;
+  Bookdata.findOne({"_id":id})
+    .then((book)=>{
+        res.send(book);
+    });
+})
 
   booksRouter.get('/', function (req, res) {
     Bookdata.find()
@@ -81,7 +94,7 @@ function checkFileType(file, callback){
 
    // Configuring thumbnail image
  // let compressedImage =path.join('../frontend/src/assets/images/files/' + req.files.file[0].filename);
-  sharp(req.files.image[0].filename).resize(200,200).png({quality : 50}).toFile('../frontend/src/assets/images/files/' + req.files.image[0].filename);
+  //sharp(req.files.image[0].filename).resize(200,200).png({quality : 50}).toFile('../frontend/src/assets/images/files/' + req.files.image[0].filename);
    
     var book = {       
        
@@ -118,6 +131,50 @@ booksRouter.delete('/remove/:id',(req,res)=>{
       res.send();
   })
 })
+
+booksRouter.put('/update', upload.fields([
+  {name: "file", maxCount: 1},
+  {name: "image", maxCount: 1},
+]),(req,res)=>{
+  res.header("Access-Control-Allow-Origin","*")
+  res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
+  console.log(req.body)
+ // console.log("file::::update:::"+req.files.file[0].filename);
+  //console.log("images:::update:::"+req.files.image[0].filename);
+  id=req.body._id,
+  bookName = req.body.bookName,
+  bookAuthor = req.body.bookAuthor,
+  bookCategory = req.body.bookCategory,
+  bookDescription = req.body.bookDescription,
+//  bookImagePath = req.files.image[0].filename,
+//  bookFilePath = req.files.file[0].filename,
+//   bookImage={
+//     data: fs.readFileSync(path.join('../frontend/src/assets/images/files/' + req.files.image[0].filename)), 
+//   contentType: 'image/png',
+// },
+//   bookFile= {
+//               data:fs.readFileSync(path.join('../frontend/src/assets/images/files/' + req.files.file[0].filename)),
+//               contentType: 'application/pdf',
+//             }
+ //           console.log(bookImagePath)        
+ 
+  Bookdata.findByIdAndUpdate({"_id":id},
+                              {$set:{
+                              "bookName":bookName,
+                              "bookAuthor":bookAuthor,
+                              "bookCategory":bookCategory,
+                              "bookDescription":bookDescription,
+                              // "bookImagePath":bookImagePath,
+                              // "bookFilePath":bookFilePath,
+                              // "bookImage":bookImage,
+                              // "bookFile":bookFile,
+                              }})
+ .then(function(){
+  
+     res.send();
+ })
+})
+
   module.exports=booksRouter;
 
   function verifyToken(req,res,next){

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookdataService } from 'src/app/services/bookdata.service';
 import {BooksModel} from './books.model';
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -19,7 +19,7 @@ export class BooksComponent implements OnInit {
  thumbnail: any;
   bookImage: any;
 
-  constructor(private sanitizer: DomSanitizer, private bookdataService: BookdataService) { }
+  constructor(private sanitizer: DomSanitizer, private bookdataService: BookdataService, private router:Router) { }
 
   ngOnInit(): void {
     this.bookdataService.getBooks().subscribe((data)=>{
@@ -42,6 +42,12 @@ export class BooksComponent implements OnInit {
       });
   
     }
+  editBook(book:any)
+  {
+    localStorage.setItem("editBookId", book._id.toString());
+    this.router.navigate(['update']);
+
+  }
   getPicture() {
     let reader = new FileReader();
     reader.readAsDataURL(this.bookImage);

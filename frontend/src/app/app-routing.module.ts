@@ -8,11 +8,13 @@ import { BooksComponent } from './components/books/books.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { UpdatebookComponent } from './components/updatebook/updatebook.component';
 import { HasRoleGuard } from './has-role.guard';
 
 const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'home',component:HomeComponent},
 {path:'login',component:LoginComponent},
+{path:'update',component:UpdatebookComponent},
 {path:'books',component:BooksComponent
 ,canActivate:[AuthGuard]
 },
