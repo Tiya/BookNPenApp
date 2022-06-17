@@ -43,7 +43,7 @@ var dir = '../frontend/src/assets/images';
   var upload = multer({
     storage: storage,
     limits:{
-      fileSize: 1000000  //upto 1MB files only
+      fileSize: 10000000  //upto 1MB files only
     },
     fileFilter:function(req,file,callback){
       checkFileType(file, callback);

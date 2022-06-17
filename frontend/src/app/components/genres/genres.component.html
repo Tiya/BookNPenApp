@@ -1,14 +1,14 @@
-<div class="event-schedule-area-two bg-color pad100">
+<div class="event-schedule-area-two mt-5 pt-lg-5">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title text-center">
                     <div class="title-text">
-                        <h2>Genres</h2>
+                        <h2><b>Genres</b></h2>
                     </div>
-                    <p>
+                    <h3>
                         Find your taste
-                    </p>
+                    </h3>
                 </div>
             </div>
             <!-- /.col end-->
@@ -16,154 +16,70 @@
         <!-- row end-->
         <div class="row">
             <div class="col-lg-12">
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
-                    </li>
-                    <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-literary-tab" data-bs-toggle="pill" data-bs-target="#pills-literary" type="button" role="tab" aria-controls="pills-literary" aria-selected="false">Literary Fiction     </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills--tab" data-bs-toggle="pill" data-bs-target="#pills-" type="button" role="tab" aria-controls="pills-" aria-selected="false">Science Fiction      </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills--tab" data-bs-toggle="pill" data-bs-target="#pills-" type="button" role="tab" aria-controls="pills-" aria-selected="false">Non Fiction          </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills--tab" data-bs-toggle="pill" data-bs-target="#pills-" type="button" role="tab" aria-controls="pills-" aria-selected="false">Mystery              </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills--tab" data-bs-toggle="pill" data-bs-target="#pills-" type="button" role="tab" aria-controls="pills-" aria-selected="false">Thrillers/Suspense   </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills--tab" data-bs-toggle="pill" data-bs-target="#pills-" type="button" role="tab" aria-controls="pills-" aria-selected="false">Horror               </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills--tab" data-bs-toggle="pill" data-bs-target="#pills-" type="button" role="tab" aria-controls="pills-" aria-selected="false">Historical           </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills--tab" data-bs-toggle="pill" data-bs-target="#pills-" type="button" role="tab" aria-controls="pills-" aria-selected="false">Romance              </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills--tab" data-bs-toggle="pill" data-bs-target="#pills-" type="button" role="tab" aria-controls="pills-" aria-selected="false">Fantasy              </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills--tab" data-bs-toggle="pill" data-bs-target="#pills-" type="button" role="tab" aria-controls="pills-" aria-selected="false">Folktale             </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills--tab" data-bs-toggle="pill" data-bs-target="#pills-" type="button" role="tab" aria-controls="pills-" aria-selected="false">Drama                </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills--tab" data-bs-toggle="pill" data-bs-target="#pills-" type="button" role="tab" aria-controls="pills-" aria-selected="false">Poetry               </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills--tab" data-bs-toggle="pill" data-bs-target="#pills-" type="button" role="tab" aria-controls="pills-" aria-selected="false">Biography            </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills--tab" data-bs-toggle="pill" data-bs-target="#pills-" type="button" role="tab" aria-controls="pills-" aria-selected="false">Religion/Spirituality</button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills--tab" data-bs-toggle="pill" data-bs-target="#pills-" type="button" role="tab" aria-controls="pills-" aria-selected="false">Self-Help             </button></li>
-                  </ul>
-                  <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                   
+                        <li class="nav-item" role="presentation" *ngFor="let book of books; index as i"> <button class="nav-link" id="pills-science-tab" data-bs-toggle="pill" data-bs-target="#pills-science" type="button" role="tab" aria-controls="pills-science" aria-selected="false">{{book.bookCategory}}  </button></li> -->
+                        <!-- <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-nfiction-tab" data-bs-toggle="pill" data-bs-target="#pills-nfiction" type="button" role="tab" aria-controls="pills-nfiction" aria-selected="false">Non Fiction          </button></li>
+                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-mystery-tab" data-bs-toggle="pill" data-bs-target="#pills-mystery" type="button" role="tab" aria-controls="pills-mystery" aria-selected="false">Mystery              </button></li>
+                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-suspense-tab" data-bs-toggle="pill" data-bs-target="#pills-suspense" type="button" role="tab" aria-controls="pills-suspense" aria-selected="false">Thrillers/Suspense   </button></li>
+                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-historical-tab" data-bs-toggle="pill" data-bs-target="#pills-historical" type="button" role="tab" aria-controls="pills-historical" aria-selected="false">Historical           </button></li>
+                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-romance-tab" data-bs-toggle="pill" data-bs-target="#pills-romance" type="button" role="tab" aria-controls="pills-romance" aria-selected="false">Romance              </button></li>
+                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-fantasy-tab" data-bs-toggle="pill" data-bs-target="#pills-fantasy" type="button" role="tab" aria-controls="pills-fantasy" aria-selected="false">Fantasy              </button></li>
+                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-folktale-tab" data-bs-toggle="pill" data-bs-target="#pills-folktale" type="button" role="tab" aria-controls="pills-folktale" aria-selected="false">Folktale             </button></li>
+                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-drama-tab" data-bs-toggle="pill" data-bs-target="#pills-drama" type="button" role="tab" aria-controls="pills-drama" aria-selected="false">Drama                </button></li>
+                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-poetry-tab" data-bs-toggle="pill" data-bs-target="#pills-poetry" type="button" role="tab" aria-controls="pills-poetry" aria-selected="false">Poetry               </button></li>
+                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-biography-tab" data-bs-toggle="pill" data-bs-target="#pills-biography" type="button" role="tab" aria-controls="pills-biography" aria-selected="false">Biography            </button></li>
+                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-selfhelp-tab" data-bs-toggle="pill" data-bs-target="#pills-selfhelp" type="button" role="tab" aria-controls="pills-selfhelp" aria-selected="false">Self-Help             </button></li>
+                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-horror-tab" data-bs-toggle="pill" data-bs-target="#pills-horror" type="button" role="tab" aria-controls="pills-horror" aria-selected="false">Horror             </button></li> -->
+                  <!-- </ul> -->
+                  <div class="tab-content">
+                    <!--  -->
+                    <div class="tab-pane fade show active" id="pills-science" role="tabpanel" aria-labelledby="pills-science-tab">
 
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th class="text-center" scope="col">Serial No.</th>
-                                        <th scope="col">Book Image</th>
+                                        <th scope="col">Genre</th>
                                         <th scope="col">Book Details</th>
+                                        <th class="text-center" scope="col"></th>
                                         <th class="text-center" scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="inner-box">
+                                    <tr class="inner-box" *ngFor="let book of books; index as i">
                                         <th scope="row">
                                             <div class="event-date">
-                                                <span>1</span>
+                                                <span>{{i+1}}</span>
                                             </div>
                                         </th>
                                         <td>
-                                            <div class="event-img">
-                                                <img src="" alt="" />
+                                            <div class="meta">
+                                                <span>{{book.bookCategory}}</span>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="event-wrap">
-                                                <h3><a href="">Harman Kardon</a></h3>
+                                                <h3><a>{{book.bookName}}</a></h3>
                                                 <div class="meta">
-                                                    <div class="organizers">
-                                                        <a href="">Aslan Lingker</a>
-                                                    </div>
-                                                    
-                                                    <div class="time">
-                                                        <span>05:35 AM - 08:00 AM 2h 25'</span>
-                                                    </div>
+                                                        <a>{{book.bookAuthor}}</a>
                                                 </div>
                                             </div>
                                         </td>
                                        
                                         <td>
                                             <div class="primary-btn">
-                                                <a class="btn btn-primary" href="">Read More</a>
+                                                <a class="btn btn-primary">Read More</a>
                                             </div>
                                         </td>
                                     </tr>
-                                    <!-- <tr class="inner-box">
-                                        <th scope="row">
-                                            <div class="event-date">
-                                                <span>20</span>
-                                               
-                                            </div>
-                                        </th>
-                                        <td>
-                                            <div class="event-img">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" />
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="event-wrap">
-                                                <h3><a href="#">Toni Duggan</a></h3>
-                                                <div class="meta">
-                                                    <div class="organizers">
-                                                        <a href="#">Aslan Lingker</a>
-                                                    </div>
-                                                    <div class="categories">
-                                                        <a href="#">Inspire</a>
-                                                    </div>
-                                                    
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="r-no">
-                                                <span>Room D3</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="primary-btn">
-                                                <a class="btn btn-primary" href="#">Read More</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="inner-box border-bottom-0">
-                                        <th scope="row">
-                                            <div class="event-date">
-                                                <span>18</span>
-                                                <p>Novembar</p>
-                                            </div>
-                                        </th>
-                                        <td>
-                                            <div class="event-img">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" />
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="event-wrap">
-                                                <h3><a href="#">Billal Hossain</a></h3>
-                                                <div class="meta">
-                                                    <div class="organizers">
-                                                        <a href="#">Aslan Lingker</a>
-                                                    </div>
-                                                    <div class="categories">
-                                                        <a href="#">Inspire</a>
-                                                    </div>
-                                                    <div class="time">
-                                                        <span>05:35 AM - 08:00 AM 2h 25'</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="r-no">
-                                                <span>Room A3</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="primary-btn">
-                                                <a class="btn btn-primary" href="#">Read More</a>
-                                            </div>
-                                        </td>
-                                    </tr> -->
-                                </tbody>
+                                 </tbody>
                             </table>
                         </div>
 
                     </div>
-
+                    <!--  -->
                     <div class="tab-pane fade" id="pills-" role="tabpanel" aria-labelledby="pills--tab">...</div>
                     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
                   </div>

@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { UpdatebookComponent } from './components/updatebook/updatebook.component';
 import { HasRoleGuard } from './has-role.guard';
+import { GenresComponent } from './components/genres/genres.component';
 
 const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'home',component:HomeComponent},
@@ -38,6 +39,9 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 // ,data:{roles:'Admin'}
 },
 {path:'dashboard',component:DashboardComponent
+,canActivate:[AuthGuard]
+},
+{path:'genres',component:GenresComponent
 ,canActivate:[AuthGuard]
 }
 ];

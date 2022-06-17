@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 // Creating Database connection
 
-mongoose.connect("mongodb+srv://admin:1289lash@users.rs1bqhv.mongodb.net/?retryWrites=true&w=majority");
+// mongoose.connect("mongodb+srv://admin:1289lash@users.rs1bqhv.mongodb.net/?retryWrites=true&w=majority");
 //mongoose.connect('mongodb+srv://tiyamartin:Tiya.7256@tiyadatabase.bn7ry.mongodb.net/BookNPen?retryWrites=true&w=majority');
 
 // mongoose.connect('mongodb+srv://FSDGroup3:Fsdgp3.123@cluster0.1f3izav.mongodb.net/BookNPen?retryWrites=true&w=majority');
@@ -33,5 +33,5 @@ const AuthorSchema = new Schema({
 // In order to use the new Schema created we need to create a Model using mongoose.model package ("Collection Name", "Schema Name")
 const Authordata = mongoose.model("authordata",AuthorSchema);
 
-// Exporting the Model created (Bookdata)
+// Exporting the Model created (Authordata)
 module.exports = Authordata
