@@ -20,7 +20,7 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'update',component:UpdatebookComponent},
 {path:'login',component:HomeComponent},
 {path:'author/:id',component:AuthorComponent},
-{path:'book/:id',component:BookComponent},
+{path:'book',component:BookComponent},
 {path:'login',component:HomeComponent},
 {path:'books',component:BooksComponent
 ,canActivate:[AuthGuard]

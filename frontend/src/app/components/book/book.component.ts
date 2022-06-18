@@ -12,18 +12,28 @@ import { BooksModel } from '../books/books.model';
 })
 export class BookComponent implements OnInit {
 
-  books: BooksModel[]=[];
+  book: BooksModel[]=[];
   myPDF: Uint8Array | undefined;
   blob: Blob | undefined;
   thumbnail: any;
   bookImage:any;
+  bookItem= {
+    bookName:'',
+    bookAuthor:'',
+    bookCategory:'',
+    bookDescription:'',
+    bookImagePath:'',
+    bookFilePath:''
+    }
   constructor(private sanitizer: DomSanitizer, private bookdataService: BookdataService, private router:Router,public _authservice:AuthService) { }
 
   ngOnInit(): void {
-    this.bookdataService.getBooks().subscribe((data)=>{
-      this.books=JSON.parse(JSON.stringify(data));
-  
-      this.bookImage = this.books[0].bookImage.data;
+
+    let bookId = localStorage.getItem("singleBookId");
+    this.bookdataService.getBook(bookId).subscribe((data)=>{
+    this.bookItem=JSON.parse(JSON.stringify(data));
+  console.log(this.bookItem)
+     // this.bookImage = this.bookItem.bookImage.data;
        this.getPicture();
 
     })
@@ -35,7 +45,7 @@ export class BookComponent implements OnInit {
     console.log(book._id);
     this.bookdataService.deleteBook(book._id)
       .subscribe((data) => {
-        this.books = this.books.filter(p => p !== book);
+        this.book = this.book.filter(p => p !== book);
       });
   
     }

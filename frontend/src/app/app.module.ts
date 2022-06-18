@@ -39,7 +39,7 @@ import { UpdateauthorComponent } from './components/updateauthor/updateauthor.co
     GenresComponent,
     AuthorComponent,
     BookComponent,
-    UpdateauthorComponent
+    UpdateauthorComponent,
   ],
   imports: [
     BrowserModule,

@@ -41,33 +41,34 @@
                                     </tr>
                             </thead>
                 <tbody>
-                    <tr class="inner-box" *ngFor="let book of books; index as i">
+                    <tr class="inner-box">
                         <td>
                             
-                            <img style="width: 100px; border-radius: 50px; padding: 5px;" class="shadow" src="assets/images/files/{{book.bookImagePath}}" alt="" />
+                            <img style="width: 100px; border-radius: 50px; padding: 5px;" class="shadow" src="assets/images/files/{{bookItem.bookImagePath}}" alt="" />
                         </td>
                         <td>
                             <div class="event-wrap">
-                                <h3><b>{{book.bookName}}</b></h3>
+                                <h3><b>{{bookItem.bookName}}</b></h3>
                                 <div class="meta">
                                     <div class="organizers text-muted">
-                                        <b> <a>{{book.bookAuthor}}</a></b>
+                                        <b> <a>{{bookItem.bookAuthor}}</a></b>
                                     </div>
                                     
                                     <div class="time p-2">
-                                        <i>{{book.bookCategory}}</i>
+                                        <i>{{bookItem.bookCategory}}</i>
                                     </div>
                                 </div>
                             </div>
                         </td>
-                        <td scope="col">
+                        <td scope="col" style="width: 200px">
                             
-                                <span>{{book.bookDescription}}</span>
+                                <span>{{bookItem.bookDescription}}</span>
                             
                         </td>
-
-                       
-                        
+                        <td>
+                        <button class="btn btn-success" style="cursor:pointer" style="margin: 20px;">
+                            <a href="assets/images/files/{{bookItem.bookFilePath}}" target="_blank">Read</a></button>
+                        </td>
                         <td *ngIf="_authservice.userRoleAccess()">
                          <button class="btn btn-warning" style="cursor:pointer"  style="margin:20px;" (click)="editBook(book)"> Edit</button>
                          
