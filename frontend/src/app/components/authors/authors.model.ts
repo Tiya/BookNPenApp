@@ -1,6 +1,6 @@
 export class AuthorModel{
     constructor(
-        public _id: number,
+        public _id: any,
         public authorname: string,
         public aboutauthor: string,
         public authorImagePath: string,

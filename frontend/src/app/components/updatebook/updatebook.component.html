@@ -1,6 +1,6 @@
 
 <div class='card'>
-    <form (ngSubmit)="editBook()">
+    <form #form="ngForm"  (ngSubmit)="form.valid&&editBook()">
 <div class='card-header'>
  Update Book Details
 </div>
@@ -15,20 +15,38 @@
             </tr>    -->
             <tr>
                 <td class="td1"><label>Book Name</label></td>
-                <td class="td1"><input type="text"  name="book_name" [(ngModel)]="bookItem.bookName"/></td>                  
+                <td class="td1"><input type="text" required #bookName="ngModel"   name="book_name" [(ngModel)]="bookItem.bookName"/></td>                  
               </tr>  
+              <tr>
+                <td></td>
+                  <td><label class="text-danger" *ngIf="form.submitted&&bookName.errors?.required">Book Name is required</label></td>
+              </tr> 
               <tr>
                 <td><label>Book Author</label></td>
-                <td><input type="text"  name="book_author" [(ngModel)]="bookItem.bookAuthor"/></td>                  
+                <td><input type="text" required #bookAuthor="ngModel" name="book_author" [(ngModel)]="bookItem.bookAuthor"/></td>                  
               </tr>  
+              <tr>
+                <td></td>
+                  <td><label class="text-danger" *ngIf="form.submitted&&bookAuthor.errors?.required">Book Author is required</label></td>
+            </tr>  
               <tr>
                 <td><label>Book Categories</label></td>
-                <td><input type="text"  name="book_category" [(ngModel)]="bookItem.bookCategory"/></td>                  
+                <td><input type="text" required #bookCategory="ngModel"  name="book_category" [(ngModel)]="bookItem.bookCategory"/></td>                  
               </tr>  
+
+              <tr>
+                <td></td>
+                  <td><label class="text-danger" *ngIf="form.submitted&&bookCategory.errors?.required">Book Category is required</label></td>
+            </tr> 
+
               <tr>
                 <td><label>Book Description</label></td>
-                <td ><input type="text"  name="book_description" [(ngModel)]="bookItem.bookDescription"/></td>                  
-              </tr> 
+                <td ><input type="text"  required  #bookDescription="ngModel"   name="book_description" [(ngModel)]="bookItem.bookDescription"/></td>                  
+              </tr>
+              <tr>
+                <td></td>
+                <td><label class="text-danger" *ngIf="form.submitted&&bookDescription.errors?.required">Book Description is required</label></td>
+            </tr> 
               <tr>
                 <div>
                  <td><label>Upload Book Image</label></td>

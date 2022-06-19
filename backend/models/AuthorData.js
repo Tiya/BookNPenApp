@@ -1,11 +1,5 @@
 // Accessing Mongoose Package
 const mongoose = require("mongoose");
-// Creating Database connection
-
-// mongoose.connect("mongodb+srv://admin:1289lash@users.rs1bqhv.mongodb.net/?retryWrites=true&w=majority");
-//mongoose.connect('mongodb+srv://tiyamartin:Tiya.7256@tiyadatabase.bn7ry.mongodb.net/BookNPen?retryWrites=true&w=majority');
-
-// mongoose.connect('mongodb+srv://FSDGroup3:Fsdgp3.123@cluster0.1f3izav.mongodb.net/BookNPen?retryWrites=true&w=majority');
 
 var conn = mongoose.connection;
 conn.on('connected', function() {
@@ -27,7 +21,9 @@ const AuthorSchema = new Schema({
         contentType: String
         // required: true
     },
-    aboutauthor: {type:String,required: true }
+    aboutauthor: {type:String,required: true },
+    authorImagePath: String
+
 });
 
 // In order to use the new Schema created we need to create a Model using mongoose.model package ("Collection Name", "Schema Name")

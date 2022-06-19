@@ -4,11 +4,8 @@
             <div class="col-lg-12">
                 <div class="section-title text-center">
                     <div class="title-text">
-                        <h2><b>Genres</b></h2>
+                        <h2><b class="fs-3">Genres</b></h2>
                     </div>
-                    <h3>
-                        Find your taste
-                    </h3>
                 </div>
             </div>
             <!-- /.col end-->
@@ -16,25 +13,10 @@
         <!-- row end-->
         <div class="row">
             <div class="col-lg-12">
-                <!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                   
-                        <li class="nav-item" role="presentation" *ngFor="let book of books; index as i"> <button class="nav-link" id="pills-science-tab" data-bs-toggle="pill" data-bs-target="#pills-science" type="button" role="tab" aria-controls="pills-science" aria-selected="false">{{book.bookCategory}}  </button></li> -->
-                        <!-- <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-nfiction-tab" data-bs-toggle="pill" data-bs-target="#pills-nfiction" type="button" role="tab" aria-controls="pills-nfiction" aria-selected="false">Non Fiction          </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-mystery-tab" data-bs-toggle="pill" data-bs-target="#pills-mystery" type="button" role="tab" aria-controls="pills-mystery" aria-selected="false">Mystery              </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-suspense-tab" data-bs-toggle="pill" data-bs-target="#pills-suspense" type="button" role="tab" aria-controls="pills-suspense" aria-selected="false">Thrillers/Suspense   </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-historical-tab" data-bs-toggle="pill" data-bs-target="#pills-historical" type="button" role="tab" aria-controls="pills-historical" aria-selected="false">Historical           </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-romance-tab" data-bs-toggle="pill" data-bs-target="#pills-romance" type="button" role="tab" aria-controls="pills-romance" aria-selected="false">Romance              </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-fantasy-tab" data-bs-toggle="pill" data-bs-target="#pills-fantasy" type="button" role="tab" aria-controls="pills-fantasy" aria-selected="false">Fantasy              </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-folktale-tab" data-bs-toggle="pill" data-bs-target="#pills-folktale" type="button" role="tab" aria-controls="pills-folktale" aria-selected="false">Folktale             </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-drama-tab" data-bs-toggle="pill" data-bs-target="#pills-drama" type="button" role="tab" aria-controls="pills-drama" aria-selected="false">Drama                </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-poetry-tab" data-bs-toggle="pill" data-bs-target="#pills-poetry" type="button" role="tab" aria-controls="pills-poetry" aria-selected="false">Poetry               </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-biography-tab" data-bs-toggle="pill" data-bs-target="#pills-biography" type="button" role="tab" aria-controls="pills-biography" aria-selected="false">Biography            </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-selfhelp-tab" data-bs-toggle="pill" data-bs-target="#pills-selfhelp" type="button" role="tab" aria-controls="pills-selfhelp" aria-selected="false">Self-Help             </button></li>
-                        <li class="nav-item" role="presentation"> <button class="nav-link" id="pills-horror-tab" data-bs-toggle="pill" data-bs-target="#pills-horror" type="button" role="tab" aria-controls="pills-horror" aria-selected="false">Horror             </button></li> -->
-                  <!-- </ul> -->
+
                   <div class="tab-content">
                     <!--  -->
-                    <div class="tab-pane fade show active" id="pills-science" role="tabpanel" aria-labelledby="pills-science-tab">
+                    <!-- <div class="tab-pane fade show active" id="pills-science" role="tabpanel" aria-labelledby="pills-science-tab"> -->
 
                         <div class="table-responsive">
                             <table class="table">
@@ -55,8 +37,10 @@
                                             </div>
                                         </th>
                                         <td>
-                                            <div class="meta">
-                                                <span>{{book.bookCategory}}</span>
+                                            <div class="meta fs-4">
+                                                <b>
+                                                    <span>{{book.bookCategory}}</span>
+                                                </b>
                                             </div>
                                         </td>
                                         <td>
@@ -70,7 +54,7 @@
                                        
                                         <td>
                                             <div class="primary-btn">
-                                                <a class="btn btn-primary">Read More</a>
+                                                <a (click)="singleBook(book)"  class="btn btn-primary">Explore</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -80,14 +64,13 @@
 
                     </div>
                     <!--  -->
-                    <div class="tab-pane fade" id="pills-" role="tabpanel" aria-labelledby="pills--tab">...</div>
-                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+                
                   </div>
 
 
             </div>
-            <!-- /col end-->
+            <!-- /col end-->    
         </div>
         <!-- /row end-->
     </div>
-</div>
+<!-- </div> -->

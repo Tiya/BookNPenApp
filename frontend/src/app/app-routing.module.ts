@@ -13,30 +13,27 @@ import { LoginComponent } from './components/login/login.component';
 import { UpdatebookComponent } from './components/updatebook/updatebook.component';
 import { HasRoleGuard } from './has-role.guard';
 import { GenresComponent } from './components/genres/genres.component';
+import { UpdateauthorComponent } from './components/updateauthor/updateauthor.component';
 
 const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'home',component:HomeComponent},
 {path:'login',component:LoginComponent},
 {path:'update',component:UpdatebookComponent},
+{path:'updateauthor',component:UpdateauthorComponent},
 {path:'login',component:HomeComponent},
-{path:'author/:id',component:AuthorComponent},
+{path:'author',component:AuthorComponent},
 {path:'book',component:BookComponent},
 {path:'login',component:HomeComponent},
 {path:'books',component:BooksComponent
 ,canActivate:[AuthGuard]
 },
-{path:'addbook',component:AddbookComponent,canActivate:[AuthGuard
-  , HasRoleGuard
-]
-// ,data:{roles:['Admin','Author']
-// }
+{path:'addbook',component:AddbookComponent,canActivate:[AuthGuard, HasRoleGuard]
 },
 {path:'authors',component:AuthorsComponent
 , canActivate:[AuthGuard]
 },
 {path:'addauthor',component:AddauthorsComponent
 ,canActivate:[AuthGuard,HasRoleGuard]
-// ,data:{roles:'Admin'}
 },
 {path:'dashboard',component:DashboardComponent
 ,canActivate:[AuthGuard]
@@ -47,7 +44,9 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{
+    scrollPositionRestoration: 'enabled'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { 

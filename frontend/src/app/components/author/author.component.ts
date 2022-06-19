@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthordataService } from 'src/app/services/authordata.service';
 import { AuthorModel } from '../authors/authors.model';
@@ -13,20 +13,23 @@ import { AuthorModel } from '../authors/authors.model';
 export class AuthorComponent implements OnInit {
 
   title:String = 'Author List';
-  authors: AuthorModel[]=[];
+  author: AuthorModel[]=[];
   blob: Blob | undefined;
-
   thumbnail: any;
   authorimage:any;
-   //image properties
- // imageWidth: number=50;
- // imageMargin: number=2;
-  constructor(private authordataService: AuthordataService, private sanitizer: DomSanitizer, public _auth:AuthService,private router:Router) { }
+  authors= {
+    authorname:'',
+    aboutauthor:'',
+    authorImagePath:''
+    }
+  constructor(private authordataService: AuthordataService, private sanitizer: DomSanitizer, public _auth:AuthService,private router:Router, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.authordataService.getAuthors().subscribe((data)=>{
+    let authorId = localStorage.getItem("singleauthorId");;
+
+    this.authordataService.getAuthor(authorId).subscribe((data)=>{
       this.authors=JSON.parse(JSON.stringify(data));
-      this.authorimage = this.authors[0].authorimage.data;
+      // this.authorimage = this.authors[0].authorimage.data;
       this.getPicture();
 
     })
@@ -38,14 +41,15 @@ export class AuthorComponent implements OnInit {
     console.log(author._id);
     this.authordataService.deleteAuthor(author._id)
       .subscribe((data) => {
-        this.authors = this.authors.filter(p => p !== author);
+        this.author = this.author.filter(p => p !== author);
       });
+      this.router.navigate(['authors']);
   
     }
   editAuthor(author:any)
   {
     localStorage.setItem("editAuthorId", author._id.toString());
-    this.router.navigate(['update']);
+    this.router.navigate(['updateauthor']);
 
   }
   getPicture() {

@@ -1,9 +1,9 @@
-<div class="container my-5 pt-5 shadow">
+<div class="container my-5 p-5 ">
     <div class="row">
         <div class="col-lg-12">
             <div class="section-title text-center">
                 <div class="title-text">
-                    <h2>Authors List</h2>
+                    <h2>Author</h2>
                 </div>
             </div>
         </div>
@@ -12,46 +12,30 @@
     <!-- row end-->
     <div class="row">
         <div class="col-lg-12">
-                    <div class="table-responsive rounded shadow m-5 p-4">
-                        <table class="table p-4">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Authors Image</th>
-                                    <th scope="col">Authors Name</th>
-                                    <th class="text-center" scope="col">About Author</th>
-                                    <th class="text-center" scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="inner-box" *ngFor="let author of authors; index as i">
-                                    <td>
-                                        
-                                        
-                                        <img style="width: 100px; border-radius: 50px; padding: 5px;" class="shadow" src="assets/images/files/{{author.authorimage}}" alt="" />
-                                        
-                                    </td>
-                                    <td>
-                                        <div class="event-wrap">
-                                            <h4><a>{{author.authorname}}</a></h4>
-                                        </div>
-                                    </td>   
-                                    
-                                    <th scope="row">
-                                        <div class="event-date text-center">
-                                            <span>{{author.aboutauthor}}</span>
-                                        </div>
-                                    </th>
-                                    
-                                    
-                                    <td *ngIf="_auth.userRoleAccess()">
-                                        <button class="btn btn-warning" style="cursor:pointer"  style="margin: 20px;" (click)="editAuthor(author)"> Edit</button>
-                                        <button class="btn btn-danger" style="cursor:pointer" (click)="deleteAuthor(author)"> Delete</button>
-                                      </td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
+            <div class="row justify-content-md-center">
+                <div class="col">
+                 <img src="assets/images/files/{{authors.authorImagePath}}" class="image-book"/>
+                </div>
+                <div class="col-9 col-auto">
+                  <h1><b>{{authors.authorname}}</b></h1>
+                    <div class="col-md-auto">
+                      <Summary>{{authors.aboutauthor}}</Summary><br>
                     </div>
+                    <div>
+                      <table>
+                        <tr>
+                         
+                          <td *ngIf="_auth.userRoleAccess()">
+                          <button class="btn btn-warning"id="edit" style="cursor:pointer"  (click)="editAuthor(authors)"> Edit</button>
+                       
+                          <button class="btn btn-danger" id="delete" style="cursor:pointer" (click)="deleteAuthor(authors)"> Delete</button>   
+                          </td>
+                      </tr>
+                      </table>
+                  </div>
+                </div>
+                
+              </div>
 
                 </div>
 

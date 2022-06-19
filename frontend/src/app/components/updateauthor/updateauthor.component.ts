@@ -8,7 +8,7 @@ import { AuthordataService } from 'src/app/services/authordata.service';
   styleUrls: ['./updateauthor.component.css']
 })
 export class UpdateauthorComponent implements OnInit {
-
+  authorId:any
   image: any
   pdffile: any
   authorItem= {
@@ -18,12 +18,13 @@ export class UpdateauthorComponent implements OnInit {
   constructor(private authordataservice:AuthordataService, private router:Router) { }
 
   ngOnInit(): void {
-  }
-
+    let authorId = localStorage.getItem("editAuthorId");
+    this.authordataservice.getAuthor(authorId).subscribe((data)=>{
+    this.authorItem=JSON.parse(JSON.stringify(data));
+  })}
   
   editAuthor()
   {    
-  
     this.authordataservice.editAuthor(this.authorItem); 
     console.log(this.authorItem); 
     alert("Success");

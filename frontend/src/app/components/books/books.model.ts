@@ -1,7 +1,7 @@
 export class BooksModel{
  
    constructor(
-      public _id: number,
+      public _id: any,
        public bookName: string,
        public bookAuthor: string,
        public bookCategory: string,

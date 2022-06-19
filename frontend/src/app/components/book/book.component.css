@@ -22,7 +22,6 @@ h3{
 
 
 .btn {
-	background: linear-gradient(to right, orange,darkorange);
 	color: white;
 	width: 100px;
 	height:40px;
@@ -78,3 +77,7 @@ h3{
     margin-left: 14pt;
  }
  
+a{
+	color: white;
+	text-decoration: none;
+}

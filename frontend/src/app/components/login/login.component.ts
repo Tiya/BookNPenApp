@@ -10,15 +10,6 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginUserData: any = {}
-
-//    Adminusers:any={
-//     "_id":1,
-//     "username":"Admin",
-//     "email":"admin@domain.com",
-//     "password":"admin1234",
-//     "role":"Admin"
-// }
-
   constructor(private _auth: AuthService,
     private _router: Router) { }
 
@@ -31,8 +22,6 @@ export class LoginComponent implements OnInit {
       res => {
         console.log(res)
         localStorage.setItem('token', res.token)
-        // this.user = this._auth.getUser(res.token)
-
         alert("Welcome to BookNPen")
         this._router.navigate(['/dashboard'])
       },

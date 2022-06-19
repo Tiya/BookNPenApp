@@ -32,11 +32,12 @@ export class AuthorsComponent implements OnInit {
     })
   }
 
-  onClick(authorid:number){
-    this.router.navigate(['/author',authorid]),{
-      queryParams :{'testParam':'testvalue'}
+  onClick(author:any){
+    localStorage.setItem("singleauthorId", author._id.toString());
+    this.router.navigate(['author']);
     }
-   }
+   
+
   getPicture() {
     let reader = new FileReader();
     reader.readAsDataURL(this.authorimage);
@@ -47,7 +48,6 @@ export class AuthorsComponent implements OnInit {
   }
  
   getImageUrl(author: any) {
- 
   console.log(author.authorimage.data);
     let objectURL = 'data:image/png;base64,' + author.authorimage.data;
     return this.sanitizer.bypassSecurityTrustUrl(objectURL);

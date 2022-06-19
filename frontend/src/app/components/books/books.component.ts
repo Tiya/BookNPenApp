@@ -39,13 +39,8 @@ export class BooksComponent implements OnInit {
   {
     localStorage.setItem("singleBookId", book._id.toString());
     this.router.navigate(['book']);
+  }
 
-  }
- onClick(bookid:number){
-  this.router.navigate(['/book',bookid]),{
-    queryParams :{'testParam':'testvalue'}
-  }
- }
   getPicture() {
     let reader = new FileReader();
     reader.readAsDataURL(this.bookImage);

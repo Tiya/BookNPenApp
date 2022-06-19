@@ -12,10 +12,10 @@ require("dotenv")
   authorRouter.use(cors());
 
   console.log("in addAuthorRoutes");
-    // authorRouter.use(bodyparser.urlencoded({
-    //   limit: "200mb",
-    //   type:'application/json'
-    //   }));
+    authorRouter.use(bodyparser.urlencoded({
+      limit: "200mb",
+      type:'application/json'
+      }));
 
       authorRouter.use(bodyparser.urlencoded({
         limit: "200mb",  
@@ -31,8 +31,6 @@ require("dotenv")
     }
     // console.log("old: "+dir);
     authorRouter.use(cors());
-  authorRouter.use(bodyparser.json());
-
 
   authorRouter.use('/images', express.static(path.join('../frontend/src/assets/images/files')));
   const storage = multer.diskStorage({
@@ -149,7 +147,7 @@ authorRouter.put('/update',verifyToken, upload.fields([
                               "authorname":authorname,
                               "aboutauthor":aboutauthor,
                               // "authorImagePath":authorImagePath,
-                              // "authorImage":authorImage,
+                              // "authorimage":authorimage,
                               }})
  .then(function(){
   

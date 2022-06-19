@@ -1,7 +1,5 @@
-<p>updateauthor works!</p>
-
 <div class='card'>
-    <form (ngSubmit)="editAuthor()">
+    <form #form="ngForm" (ngSubmit)="form.valid&&editAuthor()">
 <div class='card-header'>
  Update Author Details
 </div>
@@ -16,11 +14,19 @@
             </tr>    -->
             <tr>
                 <td class="td1"><label>Author Name</label></td>
-                <td class="td1"><input type="text"  name="authorname" [(ngModel)]="authorItem.authorname"/></td>                  
+                <td class="td1"><input type="text"  required #authorname="ngModel" name="authorname" [(ngModel)]="authorItem.authorname"/></td>                  
               </tr>  
               <tr>
+                <td></td>
+                  <td><label class="text-danger" *ngIf="form.submitted&&authorname.errors?.required">Author Name is required</label></td>
+              </tr> 
+              <tr>
                 <td><label>About Author</label></td>
-                <td><input type="text"  name="aboutauthor" [(ngModel)]="authorItem.aboutauthor"/></td>                  
+                <td><input type="text" required #aboutauthor="ngModel"  name="aboutauthor" [(ngModel)]="authorItem.aboutauthor"/></td>                  
+              </tr>  
+              <tr>
+                <td></td>
+                  <td><label class="text-danger" *ngIf="form.submitted&&aboutauthor.errors?.required">Book Author is required</label></td>
               </tr>  
               <tr>
                 <div>
