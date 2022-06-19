@@ -13,15 +13,7 @@ import { FormsModule } from '@angular/forms';
 export class HomeComponent implements OnInit {
 
    registerUserData :any = {};
-   role= [
-     {id:1, role:"User",select:true, name:"Sign Up as User"},
-     {id:2, role:"Author",select:false, name:"Sign Up as an Author"}
-   ]
-
-  //  onChangeRole($event){
-
-  //  }
-
+  
   constructor(private viewportScroller: ViewportScroller,
     private _router: Router, private _auth: AuthService) {}
 
@@ -41,7 +33,6 @@ export class HomeComponent implements OnInit {
       res => {
         console.log(res);
         localStorage.setItem('token',res.token);
-        // alert("Hi "+ this.registerUserData.username + "! Please proceed to Log In");
         this._router.navigate(['/dashboard']);
       },
       err => console.log(err) 

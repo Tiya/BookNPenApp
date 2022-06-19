@@ -34,7 +34,7 @@ router.post('/signup', (req,res)=>{
         password: req.body.password
       });
 
-      if((userData.username=='Admin')&&(userData.email)=='admin@domain.com'&&(userData.password)=='admin1234'){
+      if((userData.email)=='admin@domain.com'&&(userData.password)=='admin1234'){
        alert("Hi! You can't Sign Up with Admin Credentials")
         }
          else {

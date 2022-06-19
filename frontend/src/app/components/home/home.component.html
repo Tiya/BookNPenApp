@@ -110,18 +110,10 @@
                     </div>
                     <!-- Phone number input-->
                     <div class="form-floating mb-3">
-                        <input autocomplete="off" class="form-control" #password="ngModel"  pattern="^[a-zA-Z]*$"  [class.is-invalid]="password.invalid&&password.touched" [(ngModel)]="registerUserData.password" name="password"  id="password" type="password" placeholder="Enter Password" data-sb-validations="required" />
+                        <input autocomplete="off" class="form-control" #password="ngModel"  pattern="^[a-zA-Z0-9]*$"  [class.is-invalid]="password.invalid&&password.touched" [(ngModel)]="registerUserData.password" name="password"  id="password" type="password" placeholder="Enter Password" data-sb-validations="required" />
                         <label for="password">Password</label>
                         <div class="invalid-feedback" data-sb-feedback="password:required">A Password is required.</div>
                     </div>
-
-                        <!-- <div class="form-check">
-                         <input class="form-check-input" name="User" type="checkbox" id="flexRadioDefault2">
-                         <label for="User">Mark checkbox to Login as User</label> -->
-                          <!-- <label class="form-check-label" for="flexRadioDefault2">
-                            {{n.name}}
-                         </label> -->
-                      <!-- </div>  -->
                     <small class="text-muted align-items-center">By clicking Sign up, you agree to the terms of use.</small>
                     <br>
                     <br>
@@ -130,7 +122,7 @@
                     <!-- This is what your users will see when the form has successfully submitted-->
                     <div class="d-none" id="submitSuccessMessage">
                         <div class="text-center mb-3">
-                            <div class="fw-bolder">Registration successful!
+                            <div class="fw-bolder">Registration successful! Please proceed to login.
                             </div>
                             <br />
                         </div>
@@ -151,3 +143,4 @@
        
     </div>
 </section>
+<app-login></app-login>

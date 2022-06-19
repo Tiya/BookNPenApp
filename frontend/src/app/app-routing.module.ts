@@ -18,11 +18,11 @@ import { UpdateauthorComponent } from './components/updateauthor/updateauthor.co
 const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'home',component:HomeComponent},
 {path:'login',component:LoginComponent},
-{path:'update',component:UpdatebookComponent},
-{path:'updateauthor',component:UpdateauthorComponent},
+{path:'update',component:UpdatebookComponent, canActivate:[AuthGuard, HasRoleGuard]},
+{path:'updateauthor',component:UpdateauthorComponent, canActivate:[AuthGuard, HasRoleGuard]},
 {path:'login',component:HomeComponent},
-{path:'author',component:AuthorComponent},
-{path:'book',component:BookComponent},
+{path:'author',component:AuthorComponent, canActivate:[AuthGuard]},
+{path:'book',component:BookComponent, canActivate:[AuthGuard]},
 {path:'login',component:HomeComponent},
 {path:'books',component:BooksComponent
 ,canActivate:[AuthGuard]
