@@ -22,6 +22,7 @@ import { GenresComponent } from './components/genres/genres.component';
 import { AuthorComponent } from './components/author/author.component';
 import { BookComponent } from './components/book/book.component';
 import { UpdateauthorComponent } from './components/updateauthor/updateauthor.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { UpdateauthorComponent } from './components/updateauthor/updateauthor.co
     MaterialModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService,{
+  providers: [AuthService,AuthGuard,{
     provide : HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi : true
