@@ -23,6 +23,7 @@ import { AuthorComponent } from './components/author/author.component';
 import { BookComponent } from './components/book/book.component';
 import { UpdateauthorComponent } from './components/updateauthor/updateauthor.component';
 import { AuthGuard } from './auth.guard';
+import { HasRoleGuard } from './has-role.guard';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { AuthGuard } from './auth.guard';
     MaterialModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService,AuthGuard,{
+  providers: [AuthService,AuthGuard,HasRoleGuard,{
     provide : HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi : true
