@@ -27,7 +27,7 @@ export class UpdateauthorComponent implements OnInit {
   {    
     this.authordataservice.editAuthor(this.authorItem); 
     console.log(this.authorItem); 
-    alert("Success");
+    alert(this.authorItem.authorname+ " is updated successfully");
     this.router.navigate(['authors']);
   }
   

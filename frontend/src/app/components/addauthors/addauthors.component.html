@@ -1,9 +1,9 @@
-<div class='card m-5'>
-    <form #form="ngForm" (ngSubmit)="form.valid&&AddAuthor()">
+<div style="padding-top: 8%;" class='card'>
+    <form class="shadow" style="padding-top: 2%;" #form="ngForm" (ngSubmit)="form.valid&&AddAuthor()">
         <div class='card-header'>
   Add Author
   </div>
-  <div class='card-body shadow'>            
+  <div class='card-body'>            
   <div class='table-responsive'>
     <table class='table'>       
     
@@ -27,7 +27,7 @@
             <tr>
               <div>
                <td><label>Upload Author Image</label></td>
-                 <td> <input (change)="onImageSelect($event)" required name="image" type="file"></td>
+                 <td> <input (change)="onImageSelect($event)" required name="image" type="file"  accept="image/png, image/jpeg, image/jpg"></td>
                 </div>
               </tr> 
        <tr>

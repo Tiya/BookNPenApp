@@ -104,14 +104,14 @@ booksRouter.get('/:id',verifyToken,  (req, res) => {
         bookDescription : req.body.bookDescription,
         bookImagePath : req.files.image[0].filename,
         bookFilePath : req.files.file[0].filename,
-        bookFile: {
-          data:fs.readFileSync(path.join('../frontend/src/assets/images/files/' + req.files.file[0].filename)),
-          contentType: 'application/pdf',
-        }, 
-        bookImage:{
-          data: fs.readFileSync(path.join('../frontend/src/assets/images/files/' + req.files.image[0].filename)), 
-        contentType: 'image/png',
-      }
+      //   bookFile: {
+      //     data:fs.readFileSync(path.join('../frontend/src/assets/images/files/' + req.files.file[0].filename)),
+      //     contentType: 'application/pdf',
+      //   }, 
+      //   bookImage:{
+      //     data: fs.readFileSync(path.join('../frontend/src/assets/images/files/' + req.files.image[0].filename)), 
+      //   contentType: 'image/png',
+      // }
                
    }       
    
@@ -128,6 +128,7 @@ booksRouter.delete('/remove/:id',verifyToken,(req,res)=>{
   Bookdata.findByIdAndDelete({"_id":id})
   .then(()=>{
       console.log('success')
+      alert("Book deleted successfully");
       res.send();
   })
 })

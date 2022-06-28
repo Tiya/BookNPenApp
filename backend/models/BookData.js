@@ -16,17 +16,17 @@ const BookSchema=new Schema({
     bookName : String,
     bookImagePath: String,
     bookFilePath : String,
-    bookFile : {
-        data: Buffer,
-        contentType: String
-    },
+    // bookFile : {
+    //     data: Buffer,
+    //     contentType: String
+    // },
     bookAuthor : String,
     bookCategory : String,
     bookDescription : String,
-    bookImage : {
-        data: Buffer,
-        contentType: String
-    }
+    // bookImage : {
+    //     data: Buffer,
+    //     contentType: String
+    // }
 
 });
 

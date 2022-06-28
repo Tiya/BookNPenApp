@@ -31,7 +31,7 @@ export class AddbookComponent implements OnInit {
   //  this.bookItem.bookImage=this.image.data;
   //  this.bookItem.bookFile=this.pdffile.data;
     console.log("called");
-    alert("Success");
+    alert(this.bookItem.bookName+" is added successfully");
     this.router.navigate(['/books']);
   }
   onFileSelect(event: any){

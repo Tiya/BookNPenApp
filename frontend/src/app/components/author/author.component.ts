@@ -38,13 +38,20 @@ export class AuthorComponent implements OnInit {
   
   deleteAuthor(author: any)
   {
-    console.log(author._id);
-    this.authordataService.deleteAuthor(author._id)
-      .subscribe((data) => {
-        this.author = this.author.filter(p => p !== author);
-      });
-      this.router.navigate(['authors']);
-  
+    if(confirm("Are you sure to delete "+author.authorname+" ?")) {
+      console.log("Implement delete functionality here");
+      console.log(author._id);
+      this.authordataService.deleteAuthor(author._id)
+        .subscribe((data) => {
+          this.author = this.author.filter(p => p !== author);
+        });
+        alert(author.authorname+" is deleted successfully");
+        this.router.navigate(['authors']);
+    }
+
+   
+   
+    
     }
   editAuthor(author:any)
   {

@@ -40,8 +40,12 @@ td {
     padding-bottom: 10px;
     padding-top: 10px;
     margin-bottom: 20px;
-    border-radius: 50%;
+    border-radius: 20px;
 
+}
+#submit:hover{
+    background-color: green;
+    transition: 0.7s;
 }
 .td1{
     padding-top: 30px;

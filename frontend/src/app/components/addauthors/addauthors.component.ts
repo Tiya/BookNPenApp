@@ -24,7 +24,7 @@ export class AddauthorsComponent implements OnInit {
   
    this.authorService.newAuthor(formData);
     console.log("called");
-    alert("Success");
+    alert("Author "+ this.authorItem.authorname+" is added Successfully");
     this.router.navigate(['/authors']);
   }
   onImageSelect(event: any){

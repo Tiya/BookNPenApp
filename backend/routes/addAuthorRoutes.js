@@ -101,10 +101,10 @@ require("dotenv")
         authorname : req.body.authorname,
         aboutauthor : req.body.aboutauthor,
         authorImagePath : req.files.image[0].filename,
-        authorimage: {
-                data: fs.readFileSync(path.join('../frontend/src/assets/images/files/' + req.files.image[0].filename)), 
-                contentType: 'image/png',
-                    }
+        // authorimage: {
+        //         data: fs.readFileSync(path.join('../frontend/src/assets/images/files/' + req.files.image[0].filename)), 
+        //         contentType: 'image/png',
+        //             }
    }       
    
    var author = new Authordata(author);

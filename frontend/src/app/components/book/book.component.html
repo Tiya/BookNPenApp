@@ -1,13 +1,13 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-lg-12">
+        <!-- <div class="col-lg-12">
             <div class="text-center justify-content-md-center">
                 <div class="title-text">
-                    <h2>Book</h2>
+                    <h1><b>{{bookItem.bookName}}</b></h1>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- /.col end-->
     </div>
     <div class="row justify-content-md-center">
@@ -15,12 +15,15 @@
        <img src="assets/images/files/{{bookItem.bookImagePath}}" class="image-book"/>
       </div>
       <div class="col-9 col-auto">
-        <h1><b>{{bookItem.bookName}}</b></h1>
+       
         <div class="col-md-auto">
-           <h3>Author:<label class="bookitem">{{bookItem.bookAuthor}}</label></h3> 
+          <div class="title-text">
+            <h1><b>{{bookItem.bookName}}</b></h1>
+        </div>
+           <h2>by <label class="bookitem text-success">{{bookItem.bookAuthor}}</label></h2> 
           </div>
-          <div class="col-md-auto">
-            <h3>Category:<label class="bookitem">{{bookItem.bookCategory}}</label></h3>
+          <div>
+           <p  class="cat">  {{bookItem.bookCategory}}</p>
           </div>
           <div class="col-md-auto">
             <Summary>{{bookItem.bookDescription}}</Summary><br>

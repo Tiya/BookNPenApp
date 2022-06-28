@@ -42,13 +42,16 @@ export class BookComponent implements OnInit {
   _id :any
   deleteBook(book: any)
   {
+    if(confirm("Are you sure to delete "+book.bookName+" ?")) {
     console.log(book._id);
     this.bookdataService.deleteBook(book._id)
       .subscribe((data) => {
         this.book = this.book.filter(p => p !== book);
       });
+      alert(book.bookName+" is deleted successfully");
       this.router.navigate(['books']);
     }
+  }
   editBook(book:any)
   {
     localStorage.setItem("editBookId", book._id.toString());

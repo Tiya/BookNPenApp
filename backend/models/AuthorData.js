@@ -16,11 +16,11 @@ const Schema = mongoose.Schema;
 // Creating a new Schema named BookSchema using constructor Schema
 const AuthorSchema = new Schema({
     authorname:{type:String,required: true },
-    authorimage: {
-        data: Buffer,
-        contentType: String
-        // required: true
-    },
+    // authorimage: {
+    //     data: Buffer,
+    //     contentType: String
+    //     // required: true
+    // },
     aboutauthor: {type:String,required: true },
     authorImagePath: String
 

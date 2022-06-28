@@ -40,7 +40,7 @@ export class UpdatebookComponent implements OnInit {
     // formData.append('bookDescription', this.bookItem.bookDescription)
     this.bookdataService.editBook(this.bookItem); 
     console.log(this.bookItem); 
-    alert("Success");
+    alert(this.bookItem.bookName+" is updated successfully");
     this.router.navigate(['books']);
   }
   onFileSelect(event: any){

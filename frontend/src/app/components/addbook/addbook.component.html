@@ -1,6 +1,6 @@
 
-<div class='card'>
-  <form #form="ngForm" (ngSubmit)="form.valid&&AddBook()">
+<div style="padding-top: 8%;" class='card'>
+  <form  class="shadow" style="padding-top: 2%;" #form="ngForm" (ngSubmit)="form.valid&&AddBook()">
 <div class='card-header'>
 Add Book
 </div>
@@ -47,12 +47,12 @@ Add Book
           </tr> 
           <tr>
                <td><label>Upload Book Image</label></td>
-               <td> <input required (change)="onImageSelect($event)" name="image" type="file"></td>  
+               <td> <input required (change)="onImageSelect($event)" name="image" type="file" accept="image/png, image/jpeg, image/jpg"></td>  
           </tr> 
           
            <tr>
              <td><label>Upload Book(in pdf format and less than 100kb only)</label></td>
-            <td> <input required  (change)="onFileSelect($event)" name="file" type="file"></td>  
+            <td> <input required  (change)="onFileSelect($event)" name="file" type="file" accept=".pdf"></td>  
            </tr>
           
           <tr>
