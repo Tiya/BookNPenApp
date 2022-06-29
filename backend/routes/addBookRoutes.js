@@ -74,7 +74,7 @@ booksRouter.get('/:id',verifyToken,  (req, res) => {
     });
 })
 
-  booksRouter.get('/', function (req, res) {
+  booksRouter.get('/',verifyToken, function (req, res) {
     Bookdata.find()
             .then(function(books){
                 res.send(books);

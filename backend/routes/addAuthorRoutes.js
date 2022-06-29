@@ -73,7 +73,7 @@ require("dotenv")
   }
 
 
-  authorRouter.get('/', function (req, res) {
+  authorRouter.get('/',verifyToken, function (req, res) {
     Authordata.find()
             .then(function(authors){
               // console.log(authors);
